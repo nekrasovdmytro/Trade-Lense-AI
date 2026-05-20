@@ -116,6 +116,57 @@
         </div>
       </div>
 
+      <div class="pt-20 space-y-12">
+        <h2 class="text-3xl font-bold tracking-tight" id="install-title">Installation Guide</h2>
+        <div class="grid md:grid-cols-2 gap-8 text-left">
+          <div class="glass p-8 rounded-3xl space-y-6">
+            <h3 class="text-xl font-bold flex items-center gap-2">
+              <i data-lucide="apple" class="w-5 h-5"></i>
+              macOS Application
+            </h3>
+            <ul class="space-y-4 text-sm text-gray-500 dark:text-gray-400" id="install-mac-steps">
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">1</span>
+                <span>Download the `.zip` archive for Apple Silicon.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">2</span>
+                <span>Extract the application and move it to your <b>Applications</b> folder.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">3</span>
+                <span>Right-click the app and select <b>Open</b> (first time only) to bypass security prompt.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="glass p-8 rounded-3xl space-y-6">
+            <h3 class="text-xl font-bold flex items-center gap-2">
+              <i data-lucide="chrome" class="w-5 h-5"></i>
+              Chrome Extension
+            </h3>
+            <ul class="space-y-4 text-sm text-gray-500 dark:text-gray-400" id="install-chrome-steps">
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">1</span>
+                <span>Download and unzip the Extension archive.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">2</span>
+                <span>Open Chrome and navigate to <code>chrome://extensions</code>.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">3</span>
+                <span>Enable <b>Developer Mode</b> in the top right corner.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">4</span>
+                <span>Click <b>Load unpacked</b> and select the extracted folder.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
       <div class="pt-12">
         <div class="inline-flex items-center gap-2 px-4 py-2 bg-red-50 dark:bg-red-900/10 rounded-full text-red-600 border border-red-100 dark:border-red-900/20">
           <i data-lucide="heart" class="w-4 h-4 fill-red-600"></i>
@@ -159,6 +210,39 @@
         featModelsDesc: "Supports Qwen 2.5 VL, LLaVA, Llama 3.2, and NVIDIA NIM. Switch between local and cloud engines instantly.",
         featAnalysisTitle: "Expert Analysis",
         featAnalysisDesc: "Three specialized modes: Indicator (Signals), Educator (Concepts), and Risk Advisor (Management).",
+        installTitle: "Installation Guide",
+        installMacSteps: `
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">1</span>
+            <span>Download the \`.zip\` archive for Apple Silicon.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">2</span>
+            <span>Extract the application and move it to your <b>Applications</b> folder.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">3</span>
+            <span>Right-click the app and select <b>Open</b> (first time only) to bypass security prompt.</span>
+          </li>
+        `,
+        installChromeSteps: `
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">1</span>
+            <span>Download and unzip the Extension archive.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">2</span>
+            <span>Open Chrome and navigate to <code>chrome://extensions</code>.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">3</span>
+            <span>Enable <b>Developer Mode</b> in the top right corner.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">4</span>
+            <span>Click <b>Load unpacked</b> and select the extracted folder.</span>
+          </li>
+        `,
         faithBadge: "Jesus loves you",
         faithVerse: "\"For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life.\" — John 3:16"
       },
@@ -177,6 +261,39 @@
         featModelsDesc: "Підтримка Qwen 2.5 VL, LLaVA, Llama 3.2 та NVIDIA NIM. Миттєве перемикання між локальним та хмарним ШІ.",
         featAnalysisTitle: "Експертний аналіз",
         featAnalysisDesc: "Три спеціалізовані режими: Індикатор (Сигнали), Навчання (Концепції) та Ризик-менеджер (Управління).",
+        installTitle: "Інструкція з інсталяції",
+        installMacSteps: `
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">1</span>
+            <span>Завантажте \`.zip\` архів для Apple Silicon.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">2</span>
+            <span>Розпакуйте додаток та перемістіть його до папки <b>Програми</b> (Applications).</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">3</span>
+            <span>Натисніть правою кнопкою миші на додаток та виберіть <b>Відкрити</b> (тільки вперше), щоб обійти перевірку безпеки.</span>
+          </li>
+        `,
+        installChromeSteps: `
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">1</span>
+            <span>Завантажте та розпакуйте архів розширення.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">2</span>
+            <span>Відкрийте Chrome і перейдіть за адресою <code>chrome://extensions</code>.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">3</span>
+            <span>Увімкніть <b>Режим розробника</b> (Developer Mode) у верхньому правому куті.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">4</span>
+            <span>Натисніть <b>Завантажити розпаковане</b> та виберіть розпаковану папку.</span>
+          </li>
+        `,
         faithBadge: "Ісус любить вас",
         faithVerse: "\"Бо так полюбив Бог світ, що віддав Сина Свого Єдинородного, щоб кожен, хто вірує в Нього, не загинув, а мав життя вічне.\" — Від Івана 3:16"
       },
@@ -195,6 +312,39 @@
         featModelsDesc: "Поддержка Qwen 2.5 VL, LLaVA, Llama 3.2 и NVIDIA NIM. Мгновенное переключение между локальным и облачным ИИ.",
         featAnalysisTitle: "Экспертный анализ",
         featAnalysisDesc: "Три специализированных режима: Индикатор (Сигналы), Обучение (Концепции) и Риск-менеджер (Управление).",
+        installTitle: "Руководство по установке",
+        installMacSteps: `
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">1</span>
+            <span>Скачайте \`.zip\` архив для Apple Silicon.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">2</span>
+            <span>Распакуйте приложение и переместите его в папку <b>Программы</b> (Applications).</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">3</span>
+            <span>Нажмите правой кнопкой мыши на приложение и выберите <b>Открыть</b> (только в первый раз), чтобы обойти проверку безопасности.</span>
+          </li>
+        `,
+        installChromeSteps: `
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">1</span>
+            <span>Скачайте и распакуйте архив расширения.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">2</span>
+            <span>Откройте Chrome и перейдите по адресу <code>chrome://extensions</code>.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">3</span>
+            <span>Включите <b>Режим разработчика</b> (Developer Mode) в верхнем правом углу.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">4</span>
+            <span>Нажмите <b>Загрузить распакованное</b> и выберите распакованную папку.</span>
+          </li>
+        `,
         faithBadge: "Иисус любит вас",
         faithVerse: "\"Ибо так возлюбил Бог мир, что отдал Сына Своего Единородного, дабы всякий верующий в Него не погиб, но имел жизнь вечную.\" — От Иоанна 3:16"
       },
@@ -213,6 +363,39 @@
         featModelsDesc: "Unterstützt Qwen 2.5 VL, LLaVA, Llama 3.2 und NVIDIA NIM. Wechseln Sie sofort zwischen lokalen und Cloud-Engines.",
         featAnalysisTitle: "Experten-Analyse",
         featAnalysisDesc: "Drei Modi: Indikator (Signale), Educator (Konzepte) und Risiko-Berater (Management).",
+        installTitle: "Installationsanleitung",
+        installMacSteps: `
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">1</span>
+            <span>Laden Sie das \`.zip\`-Archiv für Apple Silicon herunter.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">2</span>
+            <span>Entpacken Sie die Anwendung und verschieben Sie sie in Ihren <b>Programme</b>-Ordner.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">3</span>
+            <span>Rechtsklicken Sie auf die App und wählen Sie <b>Öffnen</b> (nur beim ersten Mal), um den Sicherheitshinweis zu umgehen.</span>
+          </li>
+        `,
+        installChromeSteps: `
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">1</span>
+            <span>Laden Sie das Erweiterungs-Archiv herunter und entpacken Sie es.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">2</span>
+            <span>Öffnen Sie Chrome und rufen Sie <code>chrome://extensions</code> auf.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">3</span>
+            <span>Aktivieren Sie den <b>Entwicklermodus</b> (Developer Mode) oben rechts.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">4</span>
+            <span>Klicken Sie на <b>Entpackte Erweiterung laden</b> und wählen Sie den entpackten Ordner aus.</span>
+          </li>
+        `,
         faithBadge: "Jesus liebt dich",
         faithVerse: "\"Denn also hat Gott die Welt geliebt, dass er seinen eingeborenen Sohn gab, damit alle, die an ihn glauben, nicht verloren werden, sondern das ewige Leben haben.\" — Johannes 3:16"
       }
@@ -234,6 +417,9 @@
       document.getElementById("feat-models-desc").innerText = t.featModelsDesc;
       document.getElementById("feat-analysis-title").innerText = t.featAnalysisTitle;
       document.getElementById("feat-analysis-desc").innerText = t.featAnalysisDesc;
+      document.getElementById("install-title").innerText = t.installTitle;
+      document.getElementById("install-mac-steps").innerHTML = t.installMacSteps;
+      document.getElementById("install-chrome-steps").innerHTML = t.installChromeSteps;
       document.getElementById("faith-badge").innerText = t.faithBadge;
       document.getElementById("faith-verse").innerText = t.faithVerse;
 
