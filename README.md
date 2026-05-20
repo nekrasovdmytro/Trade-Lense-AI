@@ -2,9 +2,9 @@
 <img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
 </div>
 
-# TradeLens AI — Tri-Modal Neural Trading Suite
+# ChristNote AI Trade — Tri-Modal Neural Trading Suite
 
-TradeLens AI is a premium trading analysis suite comprising a **native macOS Application** and a companion **Google Chrome Extension**. It harmonizes visual, text, and voice analysis using state-of-the-art AI models (locally via Ollama or in the cloud via Nvidia NIM) to provide technical insights, pattern recognition, and precise data metrics.
+ChristNote AI Trade is a premium trading analysis suite comprising a **native macOS Application** and a companion **Google Chrome Extension**. It harmonizes visual, text, and voice analysis using state-of-the-art AI models (locally via Ollama or in the cloud via Nvidia NIM) to provide technical insights, pattern recognition, and precise data metrics.
 
 ---
 
@@ -35,7 +35,7 @@ The suite supports three main interaction channels to analyze your charts:
 Since the companion extension is hosted directly in this repository, follow these steps to install it in Google Chrome:
 
 ### Step 1: Download & Unpack the Extension
-1. Download [TradeLensAI_ChromeExtension.zip](TradeLensAI_ChromeExtension.zip) from this repository.
+1. Download [ChristNoteAITrade_ChromeExtension.zip](ChristNoteAITrade_ChromeExtension.zip) from this repository.
 2. Unzip/extract the folder contents to a directory of your choice on your computer.
 
 ### Step 2: Load the Extension in Chrome
@@ -45,7 +45,7 @@ Since the companion extension is hosted directly in this repository, follow thes
 4. Select the unpacked `ChromeExtension` folder (the directory containing `manifest.json`).
 
 ### Step 3: Grant Microphone Permission
-1. Click the extensions puzzle icon in the Chrome toolbar and pin **TradeLens AI**.
+1. Click the extensions puzzle icon in the Chrome toolbar and pin **ChristNote AI Trade**.
 2. Click the icon to open the Side Panel.
 3. Click the **🎤 (microphone)** button in the ask bar.
 4. Since sidepanels cannot prompt for media permissions directly, a setup page will open in a new tab (`permission.html`).
@@ -56,7 +56,7 @@ Since the companion extension is hosted directly in this repository, follow thes
 
 ## 💻 Running the Web landing Page Locally
 
-To host the main TradeLens AI landing page and dashboard:
+To host the main ChristNote AI Trade landing page and dashboard:
 
 ### Prerequisites
 * Node.js (v18+)
