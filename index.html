@@ -55,7 +55,7 @@
           Modern AI for <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Smart Trading</span>
         </h1>
         <p class="text-lg md:text-xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed" id="hero-desc">
-          Analyze charts, identify patterns, and manage risk with local vision models. Private, fast, and built for performance.
+          Analyze charts, identify patterns, and manage risk with local vision models. 100% Free, Private, fast, and built for performance.
         </p>
       </div>
 
@@ -101,13 +101,13 @@
       <div class="grid md:grid-cols-3 gap-6 pt-12">
         <div class="glass p-6 rounded-2xl text-left space-y-3">
           <div class="text-blue-600"><i data-lucide="shield-check" class="w-6 h-6"></i></div>
-          <h4 class="font-bold text-lg" id="feat-private-title">100% Private</h4>
-          <p class="text-sm text-gray-500 leading-relaxed" id="feat-private-desc">Runs entirely on your machine via Ollama. No data ever leaves your computer unless you explicitly choose cloud models.</p>
+          <h4 class="font-bold text-lg" id="feat-private-title">100% Private & Free</h4>
+          <p class="text-sm text-gray-500 leading-relaxed" id="feat-private-desc">Runs entirely on your machine. No data ever leaves your computer. Absolutely free, no subscriptions or hidden fees.</p>
         </div>
         <div class="glass p-6 rounded-2xl text-left space-y-3">
           <div class="text-purple-600"><i data-lucide="zap" class="w-6 h-6"></i></div>
-          <h4 class="font-bold text-lg" id="feat-models-title">Powerful Models</h4>
-          <p class="text-sm text-gray-500 leading-relaxed" id="feat-models-desc">Supports Qwen 2.5 VL, LLaVA, Llama 3.2, and NVIDIA NIM. Switch between local and cloud engines instantly.</p>
+          <h4 class="font-bold text-lg" id="feat-models-title">Local AI Models</h4>
+          <p class="text-sm text-gray-500 leading-relaxed" id="feat-models-desc">Powered by Ollama. Supports Qwen 2.5 VL, LLaVA, and Llama 3.2. Private, fast, and secure.</p>
         </div>
         <div class="glass p-6 rounded-2xl text-left space-y-3">
           <div class="text-green-600"><i data-lucide="brain-circuit" class="w-6 h-6"></i></div>
@@ -118,11 +118,32 @@
 
       <div class="pt-20 space-y-12">
         <h2 class="text-3xl font-bold tracking-tight" id="install-title">Installation Guide</h2>
-        <div class="grid md:grid-cols-2 gap-8 text-left">
+        <div class="grid md:grid-cols-3 gap-8 text-left">
+          <div class="glass p-8 rounded-3xl space-y-6">
+            <h3 class="text-xl font-bold flex items-center gap-2">
+              <i data-lucide="server" class="w-5 h-5"></i>
+              <span id="install-ollama-title">1. Local AI</span>
+            </h3>
+            <ul class="space-y-4 text-sm text-gray-500 dark:text-gray-400" id="install-ollama-steps">
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">1</span>
+                <span>Install <a href="https://ollama.com" target="_blank" class="text-blue-600 underline hover:text-blue-700">Ollama</a> on your machine.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">2</span>
+                <span>Run <code>ollama run qwen2.5-vl</code> in your terminal.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">3</span>
+                <span>The app will connect to your local AI automatically.</span>
+              </li>
+            </ul>
+          </div>
+
           <div class="glass p-8 rounded-3xl space-y-6">
             <h3 class="text-xl font-bold flex items-center gap-2">
               <i data-lucide="apple" class="w-5 h-5"></i>
-              macOS Application
+              <span id="install-mac-title">2. macOS App</span>
             </h3>
             <ul class="space-y-4 text-sm text-gray-500 dark:text-gray-400" id="install-mac-steps">
               <li class="flex gap-3">
@@ -131,11 +152,11 @@
               </li>
               <li class="flex gap-3">
                 <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">2</span>
-                <span>Extract the application and move it to your <b>Applications</b> folder.</span>
+                <span>Move the app to your <b>Applications</b> folder.</span>
               </li>
               <li class="flex gap-3">
                 <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">3</span>
-                <span>Right-click the app and select <b>Open</b> (first time only) to bypass security prompt.</span>
+                <span>Right-click and select <b>Open</b> to launch.</span>
               </li>
             </ul>
           </div>
@@ -143,24 +164,20 @@
           <div class="glass p-8 rounded-3xl space-y-6">
             <h3 class="text-xl font-bold flex items-center gap-2">
               <i data-lucide="chrome" class="w-5 h-5"></i>
-              Chrome Extension
+              <span id="install-chrome-title">3. Extension</span>
             </h3>
             <ul class="space-y-4 text-sm text-gray-500 dark:text-gray-400" id="install-chrome-steps">
               <li class="flex gap-3">
                 <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">1</span>
-                <span>Download and unzip the Extension archive.</span>
+                <span>Unzip the extension and go to <code>chrome://extensions</code>.</span>
               </li>
               <li class="flex gap-3">
                 <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">2</span>
-                <span>Open Chrome and navigate to <code>chrome://extensions</code>.</span>
+                <span>Enable <b>Developer Mode</b>.</span>
               </li>
               <li class="flex gap-3">
                 <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">3</span>
-                <span>Enable <b>Developer Mode</b> in the top right corner.</span>
-              </li>
-              <li class="flex gap-3">
-                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">4</span>
-                <span>Click <b>Load unpacked</b> and select the extracted folder.</span>
+                <span>Click <b>Load unpacked</b> and select the folder.</span>
               </li>
             </ul>
           </div>
@@ -197,20 +214,36 @@
     const translations = {
       en: {
         heroTitle: "Modern AI for <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600\">Smart Trading</span>",
-        heroDesc: "Analyze charts, identify patterns, and manage risk with local vision models. Private, fast, and built for performance.",
+        heroDesc: "Analyze charts, identify patterns, and manage risk with local vision models. 100% Free, Private, fast, and built for performance.",
         macTitle: "macOS App",
         macDesc: "Native Apple Silicon build. 100% Privacy.",
         macBtn: "Download for Mac",
         chromeTitle: "Chrome Extension",
         chromeDesc: "Browser-side sidepanel companion.",
         chromeBtn: "Download Extension",
-        featPrivateTitle: "100% Private",
-        featPrivateDesc: "Runs entirely on your machine via Ollama. No data ever leaves your computer unless you explicitly choose cloud models.",
-        featModelsTitle: "Powerful Models",
-        featModelsDesc: "Supports Qwen 2.5 VL, LLaVA, Llama 3.2, and NVIDIA NIM. Switch between local and cloud engines instantly.",
+        featPrivateTitle: "100% Private & Free",
+        featPrivateDesc: "Runs entirely on your hardware. No cloud tracking, no subscriptions, and absolutely free forever. Your data never leaves your machine.",
+        featModelsTitle: "Local AI Models",
+        featModelsDesc: "Powered by <a href=\"https://ollama.com\" target=\"_blank\" class=\"underline\">Ollama</a>. Supports Qwen 2.5 VL (Vision), LLaVA, and Llama 3.2. Switch engines instantly for maximum privacy.",
         featAnalysisTitle: "Expert Analysis",
         featAnalysisDesc: "Three specialized modes: Indicator (Signals), Educator (Concepts), and Risk Advisor (Management).",
         installTitle: "Installation Guide",
+        installOllamaTitle: "1. Local AI",
+        installOllamaSteps: `
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">1</span>
+            <span>Install <a href=\"https://ollama.com\" target=\"_blank\" class=\"text-blue-600 underline hover:text-blue-700\">Ollama</a> on your machine.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">2</span>
+            <span>Run <code>ollama run qwen2.5-vl</code> in your terminal.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">3</span>
+            <span>The app will connect to your local AI automatically.</span>
+          </li>
+        `,
+        installMacTitle: "2. macOS App",
         installMacSteps: `
           <li class="flex gap-3">
             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">1</span>
@@ -218,29 +251,26 @@
           </li>
           <li class="flex gap-3">
             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">2</span>
-            <span>Extract the application and move it to your <b>Applications</b> folder.</span>
+            <span>Move the app to your <b>Applications</b> folder.</span>
           </li>
           <li class="flex gap-3">
             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">3</span>
-            <span>Right-click the app and select <b>Open</b> (first time only) to bypass security prompt.</span>
+            <span>Right-click and select <b>Open</b> to launch.</span>
           </li>
         `,
+        installChromeTitle: "3. Extension",
         installChromeSteps: `
           <li class="flex gap-3">
             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">1</span>
-            <span>Download and unzip the Extension archive.</span>
+            <span>Unzip the extension and go to <code>chrome://extensions</code>.</span>
           </li>
           <li class="flex gap-3">
             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">2</span>
-            <span>Open Chrome and navigate to <code>chrome://extensions</code>.</span>
+            <span>Enable <b>Developer Mode</b>.</span>
           </li>
           <li class="flex gap-3">
             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">3</span>
-            <span>Enable <b>Developer Mode</b> in the top right corner.</span>
-          </li>
-          <li class="flex gap-3">
-            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">4</span>
-            <span>Click <b>Load unpacked</b> and select the extracted folder.</span>
+            <span>Click <b>Load unpacked</b> and select the folder.</span>
           </li>
         `,
         faithBadge: "Jesus loves you",
@@ -248,20 +278,36 @@
       },
       uk: {
         heroTitle: "Сучасний ШІ для <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600\">Розумного Трейдингу</span>",
-        heroDesc: "Аналізуйте графіки, знаходьте патерни та керуйте ризиками за допомогою локальних моделей. Приватно та швидко.",
+        heroDesc: "Аналізуйте графіки, знаходьте патерни та керуйте ризиками за допомогою локальних моделей. 100% Безкоштовно та Приватно.",
         macTitle: "Додаток для macOS",
         macDesc: "Нативна збірка для Apple Silicon. 100% Приватність.",
         macBtn: "Завантажити для Mac",
         chromeTitle: "Розширення Chrome",
         chromeDesc: "Помічник у бічній панелі вашого браузера.",
         chromeBtn: "Завантажити розширення",
-        featPrivateTitle: "100% Приватність",
-        featPrivateDesc: "Працює повністю на вашій машині через Ollama. Жодні дані не залишають ваш комп’ютер без вашого вибору.",
-        featModelsTitle: "Потужні моделі",
-        featModelsDesc: "Підтримка Qwen 2.5 VL, LLaVA, Llama 3.2 та NVIDIA NIM. Миттєве перемикання між локальним та хмарним ШІ.",
+        featPrivateTitle: "100% Приватно та Безкоштовно",
+        featPrivateDesc: "Працює повністю на вашому залізі. Без хмарного відстеження, без підписок і назавжди безкоштовно. Ваші дані ніколи не залишають комп'ютер.",
+        featModelsTitle: "Локальні моделі ШІ",
+        featModelsDesc: "На базі <a href=\"https://ollama.com\" target=\"_blank\" class=\"underline\">Ollama</a>. Підтримка Qwen 2.5 VL, LLaVA та Llama 3.2. Максимальна швидкість та приватність.",
         featAnalysisTitle: "Експертний аналіз",
         featAnalysisDesc: "Три спеціалізовані режими: Індикатор (Сигнали), Навчання (Концепції) та Ризик-менеджер (Управління).",
         installTitle: "Інструкція з інсталяції",
+        installOllamaTitle: "1. Локальний ШІ",
+        installOllamaSteps: `
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">1</span>
+            <span>Встановіть <a href=\"https://ollama.com\" target=\"_blank\" class=\"text-blue-600 underline hover:text-blue-700\">Ollama</a> на свій комп'ютер.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">2</span>
+            <span>Запустіть <code>ollama run qwen2.5-vl</code> у терміналі.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">3</span>
+            <span>Додаток автоматично підключиться до локального ШІ.</span>
+          </li>
+        `,
+        installMacTitle: "2. Додаток macOS",
         installMacSteps: `
           <li class="flex gap-3">
             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">1</span>
@@ -269,29 +315,26 @@
           </li>
           <li class="flex gap-3">
             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">2</span>
-            <span>Розпакуйте додаток та перемістіть його до папки <b>Програми</b> (Applications).</span>
+            <span>Перемістіть додаток до папки <b>Програми</b>.</span>
           </li>
           <li class="flex gap-3">
             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">3</span>
-            <span>Натисніть правою кнопкою миші на додаток та виберіть <b>Відкрити</b> (тільки вперше), щоб обійти перевірку безпеки.</span>
+            <span>Натисніть правою кнопкою та виберіть <b>Відкрити</b>.</span>
           </li>
         `,
+        installChromeTitle: "3. Розширення",
         installChromeSteps: `
           <li class="flex gap-3">
             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">1</span>
-            <span>Завантажте та розпакуйте архів розширення.</span>
+            <span>Розпакуйте розширення та перейдіть до <code>chrome://extensions</code>.</span>
           </li>
           <li class="flex gap-3">
             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">2</span>
-            <span>Відкрийте Chrome і перейдіть за адресою <code>chrome://extensions</code>.</span>
+            <span>Увімкніть <b>Режим розробника</b>.</span>
           </li>
           <li class="flex gap-3">
             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">3</span>
-            <span>Увімкніть <b>Режим розробника</b> (Developer Mode) у верхньому правому куті.</span>
-          </li>
-          <li class="flex gap-3">
-            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">4</span>
-            <span>Натисніть <b>Завантажити розпаковане</b> та виберіть розпаковану папку.</span>
+            <span>Натисніть <b>Завантажити розпаковане</b> та виберіть папку.</span>
           </li>
         `,
         faithBadge: "Ісус любить вас",
@@ -299,20 +342,36 @@
       },
       ru: {
         heroTitle: "Современный ИИ для <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600\">Умного Трейдинга</span>",
-        heroDesc: "Анализируйте графики, находите паттерны и управляйте рисками с помощью локальных моделей. Приватно и быстро.",
+        heroDesc: "Анализируйте графики, находите паттерны и управляйте рисками с помощью локальных моделей. 100% Бесплатно и Приватно.",
         macTitle: "Приложение для macOS",
         macDesc: "Нативная сборка для Apple Silicon. 100% Приватность.",
         macBtn: "Скачать для Mac",
         chromeTitle: "Расширение Chrome",
         chromeDesc: "Помощник в боковой панели вашего браузера.",
         chromeBtn: "Скачать расширение",
-        featPrivateTitle: "100% Приватность",
-        featPrivateDesc: "Работает полностью на вашей машине через Ollama. Никакие данные не покидают ваш компьютер без вашего выбора.",
-        featModelsTitle: "Мощные модели",
-        featModelsDesc: "Поддержка Qwen 2.5 VL, LLaVA, Llama 3.2 и NVIDIA NIM. Мгновенное переключение между локальным и облачным ИИ.",
+        featPrivateTitle: "100% Приватно и Бесплатно",
+        featPrivateDesc: "Работает полностью на вашем железе. Без облачного отслеживания, без подписок и навсегда бесплатно. Ваши данные не покидают компьютер.",
+        featModelsTitle: "Локальные модели ИИ",
+        featModelsDesc: "На базе <a href=\"https://ollama.com\" target=\"_blank\" class=\"underline\">Ollama</a>. Поддержка Qwen 2.5 VL, LLaVA и Llama 3.2. Максимальная скорость и приватность.",
         featAnalysisTitle: "Экспертный анализ",
         featAnalysisDesc: "Три специализированных режима: Индикатор (Сигналы), Обучение (Концепции) и Риск-менеджер (Управление).",
         installTitle: "Руководство по установке",
+        installOllamaTitle: "1. Локальный ИИ",
+        installOllamaSteps: `
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">1</span>
+            <span>Установите <a href=\"https://ollama.com\" target=\"_blank\" class=\"text-blue-600 underline hover:text-blue-700\">Ollama</a> на свой компьютер.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">2</span>
+            <span>Запустите <code>ollama run qwen2.5-vl</code> в терминале.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">3</span>
+            <span>Приложение автоматически подключится к локальному ИИ.</span>
+          </li>
+        `,
+        installMacTitle: "2. Приложение macOS",
         installMacSteps: `
           <li class="flex gap-3">
             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">1</span>
@@ -320,29 +379,26 @@
           </li>
           <li class="flex gap-3">
             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">2</span>
-            <span>Распакуйте приложение и переместите его в папку <b>Программы</b> (Applications).</span>
+            <span>Переместите приложение в папку <b>Программы</b>.</span>
           </li>
           <li class="flex gap-3">
             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">3</span>
-            <span>Нажмите правой кнопкой мыши на приложение и выберите <b>Открыть</b> (только в первый раз), чтобы обойти проверку безопасности.</span>
+            <span>Нажмите правой кнопкой и выберите <b>Открыть</b>.</span>
           </li>
         `,
+        installChromeTitle: "3. Расширение",
         installChromeSteps: `
           <li class="flex gap-3">
             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">1</span>
-            <span>Скачайте и распакуйте архив расширения.</span>
+            <span>Распакуйте расширение и перейдите в <code>chrome://extensions</code>.</span>
           </li>
           <li class="flex gap-3">
             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">2</span>
-            <span>Откройте Chrome и перейдите по адресу <code>chrome://extensions</code>.</span>
+            <span>Включите <b>Режим разработчика</b>.</span>
           </li>
           <li class="flex gap-3">
             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">3</span>
-            <span>Включите <b>Режим разработчика</b> (Developer Mode) в верхнем правом углу.</span>
-          </li>
-          <li class="flex gap-3">
-            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">4</span>
-            <span>Нажмите <b>Загрузить распакованное</b> и выберите распакованную папку.</span>
+            <span>Нажмите <b>Загрузить распакованное</b> и выберите папку.</span>
           </li>
         `,
         faithBadge: "Иисус любит вас",
@@ -350,20 +406,36 @@
       },
       de: {
         heroTitle: "Moderne KI für <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600\">Smart Trading</span>",
-        heroDesc: "Analysieren Sie Charts, erkennen Sie Muster und verwalten Sie Risiken mit lokalen Modellen. Privat und schnell.",
+        heroDesc: "Analysieren Sie Charts und verwalten Sie Risiken mit lokalen Modellen. 100% Kostenlos und Privat.",
         macTitle: "macOS App",
         macDesc: "Native Apple Silicon Build. 100% Datenschutz.",
         macBtn: "Für Mac herunterladen",
         chromeTitle: "Chrome Erweiterung",
         chromeDesc: "Seitenleisten-Begleiter für Ihren Browser.",
         chromeBtn: "Erweiterung herunterladen",
-        featPrivateTitle: "100% Privat",
-        featPrivateDesc: "Läuft vollständig auf Ihrem Rechner via Ollama. Daten verlassen Ihren Computer nur, wenn Sie Cloud-Modelle wählen.",
-        featModelsTitle: "Starke Modelle",
-        featModelsDesc: "Unterstützt Qwen 2.5 VL, LLaVA, Llama 3.2 und NVIDIA NIM. Wechseln Sie sofort zwischen lokalen und Cloud-Engines.",
+        featPrivateTitle: "100% Privat & Kostenlos",
+        featPrivateDesc: "Läuft vollständig auf Ihrer Hardware. Kein Cloud-Tracking, keine Abos und für immer kostenlos. Ihre Daten bleiben bei Ihnen.",
+        featModelsTitle: "Lokale KI-Modelle",
+        featModelsDesc: "Basierend auf <a href=\"https://ollama.com\" target=\"_blank\" class=\"underline\">Ollama</a>. Unterstützt Qwen 2.5 VL, LLaVA und Llama 3.2. Maximale Privatsphäre.",
         featAnalysisTitle: "Experten-Analyse",
         featAnalysisDesc: "Drei Modi: Indikator (Signale), Educator (Konzepte) und Risiko-Berater (Management).",
         installTitle: "Installationsanleitung",
+        installOllamaTitle: "1. Lokale KI",
+        installOllamaSteps: `
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">1</span>
+            <span>Installieren Sie <a href=\"https://ollama.com\" target=\"_blank\" class=\"text-blue-600 underline hover:text-blue-700\">Ollama</a> auf Ihrem Rechner.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">2</span>
+            <span>Führen Sie <code>ollama run qwen2.5-vl</code> im Terminal aus.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">3</span>
+            <span>Die App verbindet sich automatisch mit Ihrer lokalen KI.</span>
+          </li>
+        `,
+        installMacTitle: "2. macOS App",
         installMacSteps: `
           <li class="flex gap-3">
             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">1</span>
@@ -371,29 +443,26 @@
           </li>
           <li class="flex gap-3">
             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">2</span>
-            <span>Entpacken Sie die Anwendung und verschieben Sie sie in Ihren <b>Programme</b>-Ordner.</span>
+            <span>Verschieben Sie die App in Ihren <b>Programme</b>-Ordner.</span>
           </li>
           <li class="flex gap-3">
             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">3</span>
-            <span>Rechtsklicken Sie auf die App und wählen Sie <b>Öffnen</b> (nur beim ersten Mal), um den Sicherheitshinweis zu umgehen.</span>
+            <span>Rechtsklicken Sie und wählen Sie <b>Öffnen</b>.</span>
           </li>
         `,
+        installChromeTitle: "3. Erweiterung",
         installChromeSteps: `
           <li class="flex gap-3">
             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">1</span>
-            <span>Laden Sie das Erweiterungs-Archiv herunter und entpacken Sie es.</span>
+            <span>Entpacken Sie die Erweiterung und rufen Sie <code>chrome://extensions</code> auf.</span>
           </li>
           <li class="flex gap-3">
             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">2</span>
-            <span>Öffnen Sie Chrome und rufen Sie <code>chrome://extensions</code> auf.</span>
+            <span>Aktivieren Sie den <b>Entwicklermodus</b>.</span>
           </li>
           <li class="flex gap-3">
             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">3</span>
-            <span>Aktivieren Sie den <b>Entwicklermodus</b> (Developer Mode) oben rechts.</span>
-          </li>
-          <li class="flex gap-3">
-            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">4</span>
-            <span>Klicken Sie на <b>Entpackte Erweiterung laden</b> und wählen Sie den entpackten Ordner aus.</span>
+            <span>Klicken Sie auf <b>Entpackte Erweiterung laden</b> und wählen Sie den Ordner.</span>
           </li>
         `,
         faithBadge: "Jesus liebt dich",
@@ -413,12 +482,16 @@
       document.getElementById("chrome-btn").innerText = t.chromeBtn;
       document.getElementById("feat-private-title").innerText = t.featPrivateTitle;
       document.getElementById("feat-private-desc").innerText = t.featPrivateDesc;
-      document.getElementById("feat-models-title").innerText = t.featModelsTitle;
-      document.getElementById("feat-models-desc").innerText = t.featModelsDesc;
+      document.getElementById("feat-models-title").innerHTML = t.featModelsTitle;
+      document.getElementById("feat-models-desc").innerHTML = t.featModelsDesc;
       document.getElementById("feat-analysis-title").innerText = t.featAnalysisTitle;
       document.getElementById("feat-analysis-desc").innerText = t.featAnalysisDesc;
       document.getElementById("install-title").innerText = t.installTitle;
+      document.getElementById("install-ollama-title").innerText = t.installOllamaTitle;
+      document.getElementById("install-ollama-steps").innerHTML = t.installOllamaSteps;
+      document.getElementById("install-mac-title").innerText = t.installMacTitle;
       document.getElementById("install-mac-steps").innerHTML = t.installMacSteps;
+      document.getElementById("install-chrome-title").innerText = t.installChromeTitle;
       document.getElementById("install-chrome-steps").innerHTML = t.installChromeSteps;
       document.getElementById("faith-badge").innerText = t.faithBadge;
       document.getElementById("faith-verse").innerText = t.faithVerse;
