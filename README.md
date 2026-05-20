@@ -80,4 +80,12 @@ To host the main TradeLens AI landing page and dashboard:
 ## 🛠️ macOS App Installation
 * Download the compiled app archive: [AnalyzeScreen_mac_silicon.zip](AnalyzeScreen_mac_silicon.zip).
 * Unzip and drag `AnalyzeScreen.app` into your `/Applications` directory.
+* **macOS "Unverified Developer" Gatekeeper Bypass**:
+  Since the application is compiled natively and not signed with an Apple Developer account, macOS may display a malware warning. You can run it via one of these methods:
+  * **Method 1**: Right-click (or Control-click) `AnalyzeScreen.app` in `/Applications`, select **Open**, and then click **Open Anyway** on the verification dialog.
+  * **Method 2**: Go to **System Settings > Privacy & Security**, scroll down to the **Security** section, and click **Open Anyway** next to the blocked warning.
+  * **Method 3**: Run the following command in Terminal to strip the quarantine attribute:
+    ```bash
+    xattr -cr /Applications/AnalyzeScreen.app
+    ```
 * When first launching, grant Speech Recognition and Microphone access when requested by the OS.

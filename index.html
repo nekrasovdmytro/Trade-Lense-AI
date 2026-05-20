@@ -175,6 +175,9 @@
     #scripture-text, #scripture-citation {
       transition: opacity 0.15s ease-in-out;
     }
+    html:not(.dark) .text-yellow-400 {
+      color: #b45309 !important;
+    }
   </style>
 </head>
 <body class="bg-lightSurface text-lightOnSurface font-sans selection:bg-lightSecondaryContainer selection:text-lightOnSecondaryContainer transition-colors duration-300">
@@ -536,6 +539,24 @@
               <p class="text-[11px] text-darkOnSurfaceVariant leading-relaxed">
                 For cloud models, create a free developer API key on <a href="https://build.nvidia.com" target="_blank" class="text-green-400 underline">build.nvidia.com</a>, open the settings screen in the Chrome Extension sidepanel, and insert your NVIDIA key.
               </p>
+            </div>
+          </div>
+
+          <!-- macOS Gatekeeper Note -->
+          <div class="mt-8 p-6 bg-yellow-500/10 border border-yellow-500/20 rounded-2xl flex items-start gap-4">
+            <div class="p-2 bg-yellow-500/10 rounded-xl text-yellow-400">
+              <i data-lucide="shield-alert" class="h-6 w-6"></i>
+            </div>
+            <div class="space-y-2">
+              <span class="font-display font-bold text-white text-sm block">macOS "Malware / Unverified Developer" Warning</span>
+              <p class="text-xs text-darkOnSurfaceVariant leading-relaxed">
+                Because the macOS binary is compiled natively and not signed through the expensive Apple Developer Program, macOS Gatekeeper may block it. To run the app:
+              </p>
+              <ul class="list-disc pl-5 text-[11px] text-darkOnSurfaceVariant space-y-1 font-mono">
+                <li>Option A: Right-click (or Control-click) <code class="bg-darkSurfaceLow px-1 py-0.5 rounded text-white text-[10px]">AnalyzeScreen.app</code> and select <strong>Open</strong>, then click <strong>Open Anyway</strong>.</li>
+                <li>Option B: Go to <strong>System Settings > Privacy & Security</strong>, scroll down to Security, and click <strong>Open Anyway</strong> next to the blocked warning.</li>
+                <li>Option C (Terminal): Run <code class="bg-darkSurfaceLow px-1 py-0.5 rounded text-white text-[10px]">xattr -cr /Applications/AnalyzeScreen.app</code> in your Terminal to clear the quarantine flag.</li>
+              </ul>
             </div>
           </div>
         </div>
