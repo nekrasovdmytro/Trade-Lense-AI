@@ -3,35 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ChristNote | Premium Trading Chart Assistant</title>
+  <title>TradeLens AI | Intelligent Trading Assistant</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
-    body { font-family: 'Inter', sans-serif; background-color: #fafafa; }
+    body { font-family: "Inter", sans-serif; background-color: #fafafa; }
     .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(0,0,0,0.05); }
     @media (prefers-color-scheme: dark) {
       body { background-color: #0f1115; color: #f9fafb; }
       .glass { background: rgba(24, 27, 33, 0.8); border: 1px solid rgba(255,255,255,0.05); }
     }
+    .lang-btn.active { color: #2563eb; font-weight: 700; }
   </style>
 </head>
 <body class="antialiased transition-colors duration-300">
 
   <nav class="fixed top-0 w-full z-50 glass">
     <div class="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
-      <div class="flex items-center gap-3">
-        <div class="bg-gradient-to-tr from-blue-600 to-purple-600 p-1.5 rounded-lg text-white shadow-lg shadow-blue-600/20">
-          <i data-lucide="cross" class="w-5 h-5"></i>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-2">
+          <div class="bg-gradient-to-tr from-blue-600 to-purple-600 p-1 rounded text-white shadow-lg">
+            <i data-lucide="cross" class="w-4 h-4"></i>
+          </div>
+          <span class="font-bold text-lg tracking-tight">TradeLens AI</span>
         </div>
-        <span class="font-bold text-xl tracking-tight">ChristNote</span>
+        <a href="https://apps.apple.com/de/app/christnote/id6757015110?l=en-GB" target="_blank" class="text-[10px] opacity-60 hover:opacity-100 hover:text-blue-500 transition-all -mt-1 ml-6">by ChristNote</a>
       </div>
-      <div class="flex items-center gap-6">
-        <a href="https://github.com/nekrasovdmytro" target="_blank" class="flex items-center gap-2 text-sm font-medium opacity-70 hover:opacity-100 transition-opacity">
+      
+      <div class="flex items-center gap-4">
+        <div class="flex items-center gap-2 text-xs font-medium border-r border-gray-200 dark:border-gray-800 pr-4 mr-2">
+          <button onclick="setLang('en')" class="lang-btn" id="lang-en">EN</button>
+          <button onclick="setLang('uk')" class="lang-btn" id="lang-uk">UA</button>
+          <button onclick="setLang('ru')" class="lang-btn" id="lang-ru">RU</button>
+          <button onclick="setLang('de')" class="lang-btn" id="lang-de">DE</button>
+        </div>
+        <a href="https://github.com/nekrasovdmytro/Trade-Lense-AI" target="_blank" class="flex items-center gap-2 text-sm font-medium opacity-70 hover:opacity-100 transition-opacity">
           <i data-lucide="github" class="w-4 h-4"></i>
-          <span>GitHub</span>
         </a>
       </div>
     </div>
@@ -40,59 +50,72 @@
   <main class="pt-32 pb-20 px-6">
     <div class="max-w-4xl mx-auto text-center space-y-12">
       
-      <!-- Hero -->
       <div class="space-y-6">
-        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight" id="hero-title">
           Modern AI for <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Smart Trading</span>
         </h1>
-        <p class="text-lg md:text-xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+        <p class="text-lg md:text-xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed" id="hero-desc">
           Analyze charts, identify patterns, and manage risk with local vision models. Private, fast, and built for performance.
         </p>
       </div>
 
-      <!-- Downloads -->
       <div class="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-        <!-- macOS -->
         <div class="glass p-8 rounded-3xl space-y-6 text-left flex flex-col justify-between">
           <div class="space-y-4">
             <div class="w-12 h-12 bg-blue-50 dark:bg-blue-900/10 rounded-2xl flex items-center justify-center">
               <i data-lucide="laptop" class="w-6 h-6 text-blue-600"></i>
             </div>
             <div>
-              <h3 class="text-xl font-bold">macOS App</h3>
-              <p class="text-sm text-gray-500">Native Apple Silicon build. 100% Privacy.</p>
+              <h3 class="text-xl font-bold" id="mac-title">macOS App</h3>
+              <p class="text-sm text-gray-500" id="mac-desc">Native Apple Silicon build. 100% Privacy.</p>
             </div>
           </div>
-          <a href="AnalyzeScreen_mac_silicon.zip" download class="block w-full text-center py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:opacity-90 text-white font-bold rounded-xl transition-all shadow-lg shadow-blue-600/20 active:scale-95">
+          <a href="TradeLensAI_mac.zip" download class="block w-full text-center py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:opacity-90 text-white font-bold rounded-xl transition-all shadow-lg shadow-blue-600/20 active:scale-95" id="mac-btn">
             Download for Mac
           </a>
         </div>
 
-        <!-- Chrome Extension -->
         <div class="glass p-8 rounded-3xl space-y-6 text-left flex flex-col justify-between">
           <div class="space-y-4">
             <div class="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-2xl flex items-center justify-center">
               <i data-lucide="chrome" class="w-6 h-6 text-blue-600"></i>
             </div>
             <div>
-              <h3 class="text-xl font-bold">Chrome Extension</h3>
-              <p class="text-sm text-gray-500">Browser-side sidepanel companion.</p>
+              <h3 class="text-xl font-bold" id="chrome-title">Chrome Extension</h3>
+              <p class="text-sm text-gray-500" id="chrome-desc">Browser-side sidepanel companion.</p>
             </div>
           </div>
-          <a href="TradeLensAI_ChromeExtension.zip" download class="block w-full text-center py-3 bg-gray-900 dark:bg-white dark:text-gray-900 text-white font-bold rounded-xl transition-all shadow-lg active:scale-95">
+          <a href="TradeLensAI_ChromeExtension.zip" download class="block w-full text-center py-3 bg-gray-900 dark:bg-white dark:text-gray-900 text-white font-bold rounded-xl transition-all shadow-lg active:scale-95" id="chrome-btn">
             Download Extension
           </a>
         </div>
       </div>
 
-      <!-- Faith Message -->
+      <div class="grid md:grid-cols-3 gap-6 pt-12">
+        <div class="glass p-6 rounded-2xl text-left space-y-3">
+          <div class="text-blue-600"><i data-lucide="shield-check" class="w-6 h-6"></i></div>
+          <h4 class="font-bold text-lg" id="feat-private-title">100% Private</h4>
+          <p class="text-sm text-gray-500 leading-relaxed" id="feat-private-desc">Runs entirely on your machine via Ollama. No data ever leaves your computer unless you explicitly choose cloud models.</p>
+        </div>
+        <div class="glass p-6 rounded-2xl text-left space-y-3">
+          <div class="text-purple-600"><i data-lucide="zap" class="w-6 h-6"></i></div>
+          <h4 class="font-bold text-lg" id="feat-models-title">Powerful Models</h4>
+          <p class="text-sm text-gray-500 leading-relaxed" id="feat-models-desc">Supports Qwen 2.5 VL, LLaVA, Llama 3.2, and NVIDIA NIM. Switch between local and cloud engines instantly.</p>
+        </div>
+        <div class="glass p-6 rounded-2xl text-left space-y-3">
+          <div class="text-green-600"><i data-lucide="brain-circuit" class="w-6 h-6"></i></div>
+          <h4 class="font-bold text-lg" id="feat-analysis-title">Expert Analysis</h4>
+          <p class="text-sm text-gray-500 leading-relaxed" id="feat-analysis-desc">Three specialized modes: Indicator (Signals), Educator (Concepts), and Risk Advisor (Management).</p>
+        </div>
+      </div>
+
       <div class="pt-12">
         <div class="inline-flex items-center gap-2 px-4 py-2 bg-red-50 dark:bg-red-900/10 rounded-full text-red-600 border border-red-100 dark:border-red-900/20">
           <i data-lucide="heart" class="w-4 h-4 fill-red-600"></i>
-          <span class="text-sm font-semibold italic">Jesus loves you</span>
+          <span class="text-sm font-semibold italic" id="faith-badge">Jesus loves you</span>
         </div>
-        <p class="mt-4 text-gray-400 dark:text-gray-500 italic font-serif">
-          "For God so loved the world, that he gave his only Son, that whoever believes in him should not perish but have eternal life." — John 3:16
+        <p class="mt-4 text-gray-400 dark:text-gray-500 italic font-serif max-w-2xl mx-auto" id="faith-verse">
+          "For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life." — John 3:16
         </p>
       </div>
 
@@ -100,19 +123,119 @@
   </main>
 
   <footer class="py-12 border-t border-gray-100 dark:border-gray-800">
-    <div class="max-w-6xl mx-auto px-6 text-center md:text-left flex flex-col md:row justify-between items-center gap-6">
+    <div class="max-w-6xl mx-auto px-6 text-center flex flex-col items-center gap-6">
       <div class="text-sm text-gray-400">
-        © 2026 ChristNote. All rights reserved. Crafted with care by <a href="https://github.com/nekrasovdmytro" class="text-blue-600 font-semibold underline">Dmytro Nekrasov</a>.
+        © 2026 TradeLens AI. Crafted by <a href="https://github.com/nekrasovdmytro" class="text-blue-600 font-semibold underline">Dmytro Nekrasov</a>.
       </div>
-      <div class="flex items-center gap-6 text-xs font-semibold opacity-50">
-        <span>PRIVATE</span>
-        <span>LOCAL FIRST</span>
-        <span>OPEN SOURCE</span>
+      <div class="flex items-center gap-6 text-[10px] font-bold opacity-30 tracking-widest uppercase">
+        <span>Private</span>
+        <span>Local First</span>
+        <span>Pro Build</span>
       </div>
     </div>
   </footer>
 
   <script>
+    const translations = {
+      en: {
+        heroTitle: "Modern AI for <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600\">Smart Trading</span>",
+        heroDesc: "Analyze charts, identify patterns, and manage risk with local vision models. Private, fast, and built for performance.",
+        macTitle: "macOS App",
+        macDesc: "Native Apple Silicon build. 100% Privacy.",
+        macBtn: "Download for Mac",
+        chromeTitle: "Chrome Extension",
+        chromeDesc: "Browser-side sidepanel companion.",
+        chromeBtn: "Download Extension",
+        featPrivateTitle: "100% Private",
+        featPrivateDesc: "Runs entirely on your machine via Ollama. No data ever leaves your computer unless you explicitly choose cloud models.",
+        featModelsTitle: "Powerful Models",
+        featModelsDesc: "Supports Qwen 2.5 VL, LLaVA, Llama 3.2, and NVIDIA NIM. Switch between local and cloud engines instantly.",
+        featAnalysisTitle: "Expert Analysis",
+        featAnalysisDesc: "Three specialized modes: Indicator (Signals), Educator (Concepts), and Risk Advisor (Management).",
+        faithBadge: "Jesus loves you",
+        faithVerse: "\"For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life.\" — John 3:16"
+      },
+      uk: {
+        heroTitle: "Сучасний ШІ для <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600\">Розумного Трейдингу</span>",
+        heroDesc: "Аналізуйте графіки, знаходьте патерни та керуйте ризиками за допомогою локальних моделей. Приватно та швидко.",
+        macTitle: "Додаток для macOS",
+        macDesc: "Нативна збірка для Apple Silicon. 100% Приватність.",
+        macBtn: "Завантажити для Mac",
+        chromeTitle: "Розширення Chrome",
+        chromeDesc: "Помічник у бічній панелі вашого браузера.",
+        chromeBtn: "Завантажити розширення",
+        featPrivateTitle: "100% Приватність",
+        featPrivateDesc: "Працює повністю на вашій машині через Ollama. Жодні дані не залишають ваш комп’ютер без вашого вибору.",
+        featModelsTitle: "Потужні моделі",
+        featModelsDesc: "Підтримка Qwen 2.5 VL, LLaVA, Llama 3.2 та NVIDIA NIM. Миттєве перемикання між локальним та хмарним ШІ.",
+        featAnalysisTitle: "Експертний аналіз",
+        featAnalysisDesc: "Три спеціалізовані режими: Індикатор (Сигнали), Навчання (Концепції) та Ризик-менеджер (Управління).",
+        faithBadge: "Ісус любить вас",
+        faithVerse: "\"Бо так полюбив Бог світ, що віддав Сина Свого Єдинородного, щоб кожен, хто вірує в Нього, не загинув, а мав життя вічне.\" — Від Івана 3:16"
+      },
+      ru: {
+        heroTitle: "Современный ИИ для <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600\">Умного Трейдинга</span>",
+        heroDesc: "Анализируйте графики, находите паттерны и управляйте рисками с помощью локальных моделей. Приватно и быстро.",
+        macTitle: "Приложение для macOS",
+        macDesc: "Нативная сборка для Apple Silicon. 100% Приватность.",
+        macBtn: "Скачать для Mac",
+        chromeTitle: "Расширение Chrome",
+        chromeDesc: "Помощник в боковой панели вашего браузера.",
+        chromeBtn: "Скачать расширение",
+        featPrivateTitle: "100% Приватность",
+        featPrivateDesc: "Работает полностью на вашей машине через Ollama. Никакие данные не покидают ваш компьютер без вашего выбора.",
+        featModelsTitle: "Мощные модели",
+        featModelsDesc: "Поддержка Qwen 2.5 VL, LLaVA, Llama 3.2 и NVIDIA NIM. Мгновенное переключение между локальным и облачным ИИ.",
+        featAnalysisTitle: "Экспертный анализ",
+        featAnalysisDesc: "Три специализированных режима: Индикатор (Сигналы), Обучение (Концепции) и Риск-менеджер (Управление).",
+        faithBadge: "Иисус любит вас",
+        faithVerse: "\"Ибо так возлюбил Бог мир, что отдал Сына Своего Единородного, дабы всякий верующий в Него не погиб, но имел жизнь вечную.\" — От Иоанна 3:16"
+      },
+      de: {
+        heroTitle: "Moderne KI für <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600\">Smart Trading</span>",
+        heroDesc: "Analysieren Sie Charts, erkennen Sie Muster und verwalten Sie Risiken mit lokalen Modellen. Privat und schnell.",
+        macTitle: "macOS App",
+        macDesc: "Native Apple Silicon Build. 100% Datenschutz.",
+        macBtn: "Für Mac herunterladen",
+        chromeTitle: "Chrome Erweiterung",
+        chromeDesc: "Seitenleisten-Begleiter für Ihren Browser.",
+        chromeBtn: "Erweiterung herunterladen",
+        featPrivateTitle: "100% Privat",
+        featPrivateDesc: "Läuft vollständig auf Ihrem Rechner via Ollama. Daten verlassen Ihren Computer nur, wenn Sie Cloud-Modelle wählen.",
+        featModelsTitle: "Starke Modelle",
+        featModelsDesc: "Unterstützt Qwen 2.5 VL, LLaVA, Llama 3.2 und NVIDIA NIM. Wechseln Sie sofort zwischen lokalen und Cloud-Engines.",
+        featAnalysisTitle: "Experten-Analyse",
+        featAnalysisDesc: "Drei Modi: Indikator (Signale), Educator (Konzepte) und Risiko-Berater (Management).",
+        faithBadge: "Jesus liebt dich",
+        faithVerse: "\"Denn also hat Gott die Welt geliebt, dass er seinen eingeborenen Sohn gab, damit alle, die an ihn glauben, nicht verloren werden, sondern das ewige Leben haben.\" — Johannes 3:16"
+      }
+    };
+
+    function setLang(lang) {
+      const t = translations[lang];
+      document.getElementById("hero-title").innerHTML = t.heroTitle;
+      document.getElementById("hero-desc").innerText = t.heroDesc;
+      document.getElementById("mac-title").innerText = t.macTitle;
+      document.getElementById("mac-desc").innerText = t.macDesc;
+      document.getElementById("mac-btn").innerText = t.macBtn;
+      document.getElementById("chrome-title").innerText = t.chromeTitle;
+      document.getElementById("chrome-desc").innerText = t.chromeDesc;
+      document.getElementById("chrome-btn").innerText = t.chromeBtn;
+      document.getElementById("feat-private-title").innerText = t.featPrivateTitle;
+      document.getElementById("feat-private-desc").innerText = t.featPrivateDesc;
+      document.getElementById("feat-models-title").innerText = t.featModelsTitle;
+      document.getElementById("feat-models-desc").innerText = t.featModelsDesc;
+      document.getElementById("feat-analysis-title").innerText = t.featAnalysisTitle;
+      document.getElementById("feat-analysis-desc").innerText = t.featAnalysisDesc;
+      document.getElementById("faith-badge").innerText = t.faithBadge;
+      document.getElementById("faith-verse").innerText = t.faithVerse;
+
+      document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
+      document.getElementById("lang-" + lang).classList.add("active");
+      document.documentElement.lang = lang;
+    }
+
+    setLang("en");
     lucide.createIcons();
   </script>
 </body>

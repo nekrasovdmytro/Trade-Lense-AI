@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title data-i18n="micPermissionTitle">Microphone Permission Required — TradeLens AI</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #0f0f17;
+      color: #e2e8f0;
+      text-align: center;
+      padding: 24px;
+    }
+    .card {
+      background: #181824;
+      border: 1px solid #2e2e42;
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 440px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    h1 {
+      font-size: 24px;
+      margin-top: 0;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #a78bfa, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p {
+      line-height: 1.6;
+      color: #94a3b8;
+      margin-bottom: 28px;
+      font-size: 15px;
+    }
+    .icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+      display: inline-block;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+    button {
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+      transition: all 0.2s ease;
+    }
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+    }
+    button:active {
+      transform: translateY(1px);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">🎤</div>
+    <h1 data-i18n="micPermissionHeader">Microphone Access Required</h1>
+    <p data-i18n="micPermissionDesc">TradeLens AI needs microphone access to transcribe your voice notes. Click the button below and click Allow when prompted by Chrome.</p>
+    <button id="request-btn" data-i18n="micPermissionBtn">Grant Permission</button>
+  </div>
+  <script>
+    function translateUI() {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const message = chrome.i18n.getMessage(key);
+        if (message) {
+          if (el.tagName === 'TITLE') document.title = message;
+          else el.innerText = message;
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      translateUI();
+    });
+
+    document.getElementById('request-btn').addEventListener('click', async () => {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        stream.getTracks().forEach(track => track.stop());
+        alert(chrome.i18n.getMessage('micPermissionSuccess'));
+        window.close();
+      } catch (err) {
+        alert(chrome.i18n.getMessage('micPermissionDenied'));
+      }
+    });
+  </script>
+</body>
+</html>

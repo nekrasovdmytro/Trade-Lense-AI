@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>TradeLens AI</title>
+  <link rel="stylesheet" href="sidepanel.css">
+  <style>
+    /* Inline styles moved to sidepanel.css for better organization */
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="title-row">
+      <span class="icon"><img src="icon128.png" class="app-icon" alt="Icon"></span>
+      <h1 data-i18n="appName">TradeLens AI</h1>
+      <span id="trial-badge" class="trial-badge active">PRO</span>
+    </div>
+    <div class="settings-row">
+      <select id="model-select">
+        <optgroup label="📷 Ollama Vision (Local)" id="ollama-vision-optgroup">
+          <option value="ollama/qwen2.5vl:3b">Qwen 2.5 VL 3B</option>
+          <option value="ollama/qwen2.5vl:7b">Qwen 2.5 VL 7B</option>
+          <option value="ollama/llava">LLaVA</option>
+          <option value="ollama/llava-llama3">LLaVA LLaMA 3</option>
+          <option value="ollama/minicpm-v">MiniCPM-V</option>
+          <option value="ollama/moondream">Moondream</option>
+        </optgroup>
+        <optgroup label="💬 Ollama Text (Local)" id="ollama-text-optgroup">
+          <option value="ollama-text/llama3.2:3b">Llama 3.2 3B</option>
+          <option value="ollama-text/llama3.2:1b">Llama 3.2 1B</option>
+          <option value="ollama-text/llama3.1:8b">Llama 3.1 8B</option>
+          <option value="ollama-text/mistral">Mistral 7B</option>
+          <option value="ollama-text/gemma3:4b">Gemma 3 4B</option>
+          <option value="ollama-text/phi4-mini">Phi 4 Mini</option>
+          <option value="ollama-text/qwen2.5:7b">Qwen 2.5 7B</option>
+          <option value="ollama-text/deepseek-r1:8b">DeepSeek R1 8B</option>
+        </optgroup>
+        <optgroup label="📷 NVIDIA NIM Vision (Cloud)" id="nvidia-optgroup">
+          <option value="nvidia/nvidia/nemotron-nano-12b-v2-vl">Nemotron Nano 12B VL</option>
+          <option value="nvidia/meta/llama-3.2-11b-vision-instruct">Llama 3.2 11B Vision</option>
+          <option value="nvidia/meta/llama-3.2-90b-vision-instruct">Llama 3.2 90B Vision</option>
+          <option value="nvidia/microsoft/phi-3.5-vision-instruct">Phi 3.5 Vision</option>
+        </optgroup>
+        <optgroup label="💬 NVIDIA NIM Text (Cloud)" id="nvidia-text-optgroup">
+          <option value="nvidia-text/meta/llama-3.1-8b-instruct">Llama 3.1 8B Instruct</option>
+          <option value="nvidia-text/meta/llama-3.3-70b-instruct">Llama 3.3 70B Instruct</option>
+          <option value="nvidia-text/nvidia/llama-3.1-nemotron-nano-8b-v1">Nemotron Nano 8B</option>
+          <option value="nvidia-text/mistralai/mistral-7b-instruct-v0.3">Mistral 7B Instruct</option>
+        </optgroup>
+      </select>
+      <button id="help-btn" title="Help/Setup">❓</button>
+      <button id="settings-btn" title="Settings">⚙️</button>
+    </div>
+  </div>
+
+  <div class="mode-selector">
+    <button class="mode-btn active" data-mode="indicator">
+      <span class="mode-icon">⚡</span>
+      <span class="mode-label" data-i18n="modeIndicator">Indicator</span>
+    </button>
+    <button class="mode-btn" data-mode="educator">
+      <span class="mode-icon">🎓</span>
+      <span class="mode-label" data-i18n="modeEducator">Educator</span>
+    </button>
+    <button class="mode-btn" data-mode="riskAdvisor">
+      <span class="mode-icon">🛡️</span>
+      <span class="mode-label" data-i18n="modeRiskAdvisor">Risk Advisor</span>
+    </button>
+    <button class="mode-btn" data-mode="general">
+      <span class="mode-icon">🤖</span>
+      <span class="mode-label" data-i18n="modeAskAI">Ask AI</span>
+    </button>
+  </div>
+
+  <div id="help-view" class="view hidden">
+    <h3 data-i18n="howItWorksTitle">How it Works</h3>
+    <p data-i18n="howItWorksDesc" style="font-size: 13px; line-height: 1.5; color: var(--text-secondary); margin-bottom: 20px;">
+      TradeLens AI combines computer vision with large language models to provide professional trading insights. It captures your screen, identifies chart patterns, indicators, and price action, then generates a detailed analysis based on your selected mode.
+    </p>
+
+    <h3 data-i18n="setupGuide">Setup Guide</h3>
+    <div class="help-content">
+      <section>
+        <h4 data-i18n="setupStep1Title">1. Load Extension</h4>
+        <p data-i18n="setupStep1Desc">Open chrome://extensions/, enable Developer mode, and load the extension folder.</p>
+      </section>
+      <section>
+        <h4 data-i18n="setupStep2Title">2. Install Ollama (for local models)</h4>
+        <p data-i18n="setupStep2Desc">Download from ollama.com and run a model (e.g., qwen2.5vl).</p>
+        <code>ollama run qwen2.5vl:7b</code>
+      </section>
+      <section>
+        <h4 data-i18n="setupStep3Title">3. Ollama CORS Fix</h4>
+        <p data-i18n="setupStep3Desc">Restart Ollama with OLLAMA_ORIGINS="chrome-extension://*" to allow connection.</p>
+        <code>OLLAMA_ORIGINS="chrome-extension://*" ollama serve</code>
+      </section>
+      <section>
+        <h4 data-i18n="setupStep4Title">4. Cloud AI (Optional)</h4>
+        <p>To use NVIDIA NIM text or vision models, go to ⚙️ Settings and enter your API key.</p>
+      </section>
+      <section>
+        <h4 data-i18n="setupStep5Title">5. Voice Input</h4>
+        <p>Click the 🎤 mic button to record. Supports Ukrainian, English, and 17 other languages. Set the language in ⚙️ Settings.</p>
+      </section>
+    </div>
+    <button id="close-help-btn" class="primary" data-i18n="gotIt">Got it!</button>
+  </div>
+
+  <div id="settings-view" class="view hidden">
+    <h3 data-i18n="settings">Settings</h3>
+    <div class="field">
+      <label data-i18n="ollamaUrl">Ollama URL (Local)</label>
+      <input type="text" id="ollama-url" placeholder="http://localhost:11434">
+      <span class="field-desc">Install from <a href="https://ollama.com" target="_blank">ollama.com</a>.<br>Start with CORS: <code>OLLAMA_ORIGINS="chrome-extension://*" ollama serve</code></span>
+    </div>
+    <div class="field">
+      <label>Custom Ollama Vision Model (Optional)</label>
+      <input type="text" id="custom-ollama-model" placeholder="e.g. llama3.2-vision">
+    </div>
+    <div class="field">
+      <label>Custom Ollama Text Model (Optional)</label>
+      <input type="text" id="custom-ollama-text-model" placeholder="e.g. llama3.1:70b">
+    </div>
+    <div class="field">
+      <label data-i18n="nvidiaKey">NVIDIA API Key</label>
+      <input type="password" id="nvidia-key" placeholder="nvapi-...">
+      <span class="field-desc">Used for both NVIDIA vision and text models.</span>
+    </div>
+    <div class="field">
+      <label>Custom NVIDIA Model Name (Optional)</label>
+      <input type="text" id="custom-nvidia-model" placeholder="e.g. nvidia/grusa-vision">
+    </div>
+
+    <div class="field">
+      <label data-i18n="responseLang">Response Language (AI output)</label>
+      <select id="language-select">
+        <option value="en">English</option>
+        <option value="uk">Ukrainian (Українська)</option>
+        <option value="es">Spanish (Español)</option>
+        <option value="fr">French (Français)</option>
+        <option value="de">German (Deutsch)</option>
+        <option value="it">Italian (Italiano)</option>
+        <option value="pt">Portuguese (Português)</option>
+        <option value="ru">Russian (Русский)</option>
+        <option value="pl">Polish (Polski)</option>
+        <option value="nl">Dutch (Nederlands)</option>
+        <option value="zh">Chinese (中文)</option>
+        <option value="ja">Japanese (日本語)</option>
+        <option value="ko">Korean (한국어)</option>
+        <option value="ar">Arabic (العربية)</option>
+        <option value="hi">Hindi (हिन्दी)</option>
+        <option value="tr">Turkish (Türkçe)</option>
+        <option value="vi">Vietnamese (Tiếng Việt)</option>
+        <option value="th">Thai (ภาษาไทย)</option>
+        <option value="id">Indonesian (Bahasa Indonesia)</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label data-i18n="voiceLang">🎤 Voice Recognition Language</label>
+      <select id="speech-language-select">
+        <option value="en-US">English (US)</option>
+        <option value="uk-UA">Ukrainian (Українська)</option>
+        <option value="es-ES">Spanish (Español)</option>
+        <option value="fr-FR">French (Français)</option>
+        <option value="de-DE">German (Deutsch)</option>
+        <option value="it-IT">Italian (Italiano)</option>
+        <option value="pt-BR">Portuguese (Brasil)</option>
+        <option value="ru-RU">Russian (Русский)</option>
+        <option value="pl-PL">Polish (Polski)</option>
+        <option value="nl-NL">Dutch (Nederlands)</option>
+        <option value="zh-CN">Chinese (中文)</option>
+        <option value="ja-JP">Japanese (日本語)</option>
+        <option value="ko-KR">Korean (한국어)</option>
+        <option value="ar-SA">Arabic (العربية)</option>
+        <option value="hi-IN">Hindi (हिन्दी)</option>
+        <option value="tr-TR">Turkish (Türkçe)</option>
+        <option value="vi-VN">Vietnamese (Tiếng Việt)</option>
+        <option value="th-TH">Thai (ภาษาไทย)</option>
+        <option value="id-ID">Indonesian (Bahasa Indonesia)</option>
+      </select>
+      <span class="field-desc">Language used when recording voice with the 🎤 button.</span>
+    </div>
+
+    <!-- GDPR Rules & Consent Block -->
+    <div class="gdpr-block">
+      <h5 data-i18n="gdprTitle">🛡️ GDPR & Cloud Data Protection</h5>
+      <p>Using cloud providers (NVIDIA) sends captured screen content encrypted over HTTPS for processing. No images are stored, logged, or used for model training under GDPR compliance.</p>
+      <label class="consent-label">
+        <input type="checkbox" id="cloud-consent"> <span data-i18n="gdprConsent">I consent to secure cloud data transmission for analysis.</span>
+      </label>
+    </div>
+
+    <button id="save-settings-btn" class="primary" data-i18n="save">Save & Close</button>
+  </div>
+
+  <div id="content" class="content">
+    <div id="idle-view" class="view">
+      <div class="big-icon">📊</div>
+      <p id="idle-text" data-i18n="idleText">Click below to analyze the chart on the current page.</p>
+    </div>
+
+    <div id="loading-view" class="view hidden">
+      <div class="spinner"></div>
+      <p id="loading-text">AI is thinking...</p>
+    </div>
+
+    <div id="result-view" class="view hidden">
+      <div id="result-header" class="result-header">
+        <span id="recommendation-badge" class="badge">BUY</span>
+        <span id="confidence-text">Confidence: 85%</span>
+      </div>
+      <div id="result-text" class="result-text"></div>
+      <div id="key-signals" class="signals"></div>
+    </div>
+  </div>
+
+  <div id="disclaimer-bar" class="disclaimer-bar" data-i18n="verifyDecisions">
+    ⚠️ AI can make mistakes. Verify important decisions.
+  </div>
+
+  <div id="instructions-container" class="instructions-container">
+    <input type="text" id="specific-instructions" placeholder="Specific instructions / focus (optional)…" data-i18n-placeholder="instrPlaceholder">
+  </div>
+
+  <!-- Screen context indicator (for text models) -->
+  <div id="screen-ctx-badge" class="screen-ctx-badge" data-i18n="screenCtxAvailable">
+    📷 Screen context available from last vision analysis
+  </div>
+
+  <div class="toolbar">
+    <button id="capture-full-btn" class="secondary">
+      <span>🖼️</span> <span data-i18n="captureFull">Analyze Full Page</span>
+    </button>
+    <button id="capture-region-btn" class="primary">
+      <span>✂️</span> <span data-i18n="captureRegion">Select Region</span>
+    </button>
+  </div>
+
+  <!-- Transcript display (shown while recording) -->
+  <div id="transcript-strip" class="transcript-strip"></div>
+
+  <!-- Ask bar (always visible) -->
+  <div class="ask-row">
+    <button id="mic-btn" class="mic-btn" title="Record voice (auto-stops on silence)">🎤</button>
+    <input type="text" id="ask-input" placeholder="Ask AI about the screen…">
+    <button id="ask-send-btn" class="ask-send-btn" title="Send question to AI">↑</button>
+  </div>
+
+  <div id="cors-notice" class="notice hidden">
+    <strong>⚠️ Ollama CORS Required</strong>
+    <p>Run Ollama with:</p>
+    <code>OLLAMA_ORIGINS="chrome-extension://*" ollama serve</code>
+  </div>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>
