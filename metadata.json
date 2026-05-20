@@ -1,0 +1,6 @@
+{
+  "name": "Sanctum AI",
+  "description": "Precision financial intelligence built on eternal values. Trade with wisdom and automated stewardship checks.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

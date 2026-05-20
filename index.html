@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Dmytro Nekrasov">
+  <meta name="dcterms.rights" content="All copyrights belong to Dmytro Nekrasov">
+  <title>Sanctum AI | Precision Intelligence, Eternal Values</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons via CDN -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            // "Modern Ethos" (Dark Theme) Values
+            darkSurface: '#081425',
+            darkSurfaceLow: '#111c2d',
+            darkSurfaceContainer: '#152031',
+            darkSurfaceHigh: '#1f2a3c',
+            darkSurfaceHighest: '#2a3548',
+            darkOnSurface: '#d8e3fb',
+            darkOnSurfaceVariant: '#c6c6cd',
+            darkOutline: '#909097',
+            darkPrimary: '#bec6e0',
+            darkPrimaryContainer: '#0f172a',
+            darkTertiary: '#e9c349', // celestial gold
+            darkTertiaryContainer: '#cba72f',
+
+            // "Zenith Corporate" (Light Theme) Values
+            lightSurface: '#f9f9ff',
+            lightSurfaceLow: '#f0f3ff',
+            lightSurfaceContainer: '#e7eeff',
+            lightSurfaceHigh: '#dee8ff',
+            lightSurfaceHighest: '#d8e3fb',
+            lightOnSurface: '#111c2d',
+            lightOnSurfaceVariant: '#44474f',
+            lightOutline: '#75777f',
+            lightPrimary: '#00020a',
+            lightPrimaryContainer: '#001b44', // deep navy
+            lightSecondaryContainer: '#d5e3fc',
+            lightOnSecondaryContainer: '#57657a',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Hanken Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Premium Glassmorphic shadows and micro-accents */
+    .glass-dark {
+      background: rgba(21, 32, 49, 0.4);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(144, 144, 151, 0.1);
+    }
+    .glass-light {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(117, 117, 127, 0.15);
+    }
+    .neon-glow {
+      box-shadow: 0 0 40px -10px rgba(233, 195, 73, 0.2);
+    }
+    .neural-mesh {
+      background-size: 20px 20px;
+      background-image: 
+        radial-gradient(circle, rgba(233, 195, 73, 0.05) 1px, transparent 1px);
+    }
+    .neural-mesh-light {
+      background-size: 20px 20px;
+      background-image: 
+        radial-gradient(circle, rgba(0, 27, 68, 0.05) 1px, transparent 1px);
+    }
+    /* Waveform column pulse */
+    @keyframes pulseHeight {
+      0%, 100% { height: 16px; }
+      50% { height: 64px; }
+    }
+    .waveform-bar {
+      animation: pulseHeight 1.2s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="bg-darkSurface text-darkOnSurface font-sans selection:bg-darkTertiary selection:text-darkSurfaceContainer transition-colors duration-300">
+
+  <!-- ============================================== -->
+  <!--                SITE HEADER                     -->
+  <!-- ============================================== -->
+  <header class="fixed top-0 w-full z-50 bg-darkSurfaceLow/80 backdrop-blur-xl border-b border-darkOutline/10 shadow-sm navbar-theme-class">
+    <div class="flex justify-between items-center h-20 px-6 lg:px-16 max-w-7xl mx-auto">
+      
+      <!-- Logo & Title -->
+      <button onclick="switchView('landing')" class="flex items-center gap-3 active:scale-95 transition-transform text-left">
+        <div class="relative flex items-center justify-center p-2 rounded-xl bg-gradient-to-tr from-darkTertiaryContainer via-darkTertiary to-darkPrimary">
+          <i data-lucide="shield-check" class="h-6 w-6 text-darkSurfaceLow"></i>
+          <span class="absolute -top-1 -right-1 flex h-2.5 w-2.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-darkTertiary opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-darkTertiary"></span>
+          </span>
+        </div>
+        <div>
+          <span class="font-display text-xl font-bold tracking-tight text-white block nav-title-color">Sanctum AI</span>
+          <span class="font-mono text-[10px] tracking-wider text-darkTertiary block uppercase nav-subtitle-color">Faith-Led Finance</span>
+        </div>
+      </button>
+
+      <!-- Mid Navigation / Mode View Selector -->
+      <div class="hidden md:flex items-center bg-darkSurfaceContainer/60 border border-darkOutline/15 p-1 rounded-xl shadow-inner select-bg">
+        <button id="tab-btn-landing" onclick="switchView('landing')" class="px-5 py-2.5 rounded-lg text-xs font-semibold tracking-wide flex items-center gap-2 transition-all bg-darkTertiary text-darkSurfaceLow shadow active-tab-class">
+          <i data-lucide="compass" class="h-4 w-4"></i> Public Site
+        </button>
+        <button id="tab-btn-dashboard" onclick="switchView('dashboard')" class="px-5 py-2.5 rounded-lg text-xs font-semibold tracking-wide flex items-center gap-2 transition-all hover:text-white text-darkOnSurfaceVariant inactive-tab-class">
+          <i data-lucide="layout-dashboard" class="h-4 w-4"></i> Steward's Dashboard
+        </button>
+      </div>
+
+      <!-- Action Area -->
+      <div class="flex items-center gap-4">
+        <!-- Theme Toggle button -->
+        <button onclick="toggleTheme()" class="p-2.5 rounded-xl border border-darkOutline/10 hover:border-darkTertiary/50 hover:bg-darkSurfaceHigh transition-all text-darkOnSurfaceVariant hover:text-white theme-btn-class" title="Switch Theme">
+          <i id="theme-icon" data-lucide="sun" class="h-5 w-5"></i>
+        </button>
+        
+        <!-- Toggle button for mobile/dashboard view -->
+        <button onclick="switchView('dashboard')" id="dashboard-cta-btn" class="bg-gradient-to-b from-darkTertiary to-darkTertiaryContainer text-darkSurfaceLow hover:opacity-90 px-6 py-2.5 rounded-xl font-semibold text-xs transition-all active:scale-95 shadow cta-btn-class flex items-center gap-2">
+          <span>Steward Suite</span>
+          <i data-lucide="arrow-right" class="h-4 w-4"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================== -->
+  <!--           VIEW 1: LANDING PAGEVIEW             -->
+  <!-- ============================================== -->
+  <div id="view-landing" class="block">
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center overflow-hidden neural-mesh hero-mesh-theme">
+      <!-- Ambient Backdrops -->
+      <div class="absolute inset-0 hero-gradient z-0"></div>
+      
+      <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-16 py-12 items-center w-full">
+        <!-- Hero Text content -->
+        <div class="space-y-8">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-darkTertiary/10 border border-darkTertiary/25 hero-tag-border shadow-sm">
+            <i data-lucide="crown" class="h-4 w-4 text-darkTertiary tag-icon-color"></i>
+            <span class="text-xs font-mono text-darkTertiary uppercase tracking-widest tag-text-color">Ethical Intelligence</span>
+          </div>
+          
+          <h1 class="font-display text-4xl lg:text-5xl font-extrabold text-white leading-tight hero-main-title">
+            Steward Your Capital.<br/>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-darkTertiary to-darkTertiaryContainer hero-gradient-title">Trade with Wisdom.</span>
+          </h1>
+          
+          <p class="font-body-md text-base text-darkOnSurfaceVariant max-w-lg leading-relaxed hero-subtitle">
+            Sanctum AI is the world's premier neural trading suite built specifically for faithful Christian stewards. Harmonize maximum data precision with zero compromise in local market ethics.
+          </p>
+
+          <div class="flex flex-wrap gap-4 pt-4 hero-btns">
+            <button onclick="switchView('dashboard')" class="bg-gradient-to-b from-darkTertiary to-darkTertiaryContainer text-darkSurfaceLow px-8 py-4 rounded-xl font-bold text-sm hover:shadow-xl hover:shadow-darkTertiary/15 transition-all flex items-center gap-2 group active:scale-95 select-none cta-btn-class">
+              <span>Go to Dashboard</span>
+              <i data-lucide="arrow-right-to-line" class="h-4 w-4 group-hover:translate-x-1 transition-transform"></i>
+            </button>
+            <button onclick="animateWaveformForce()" class="border border-darkOutline/20 hover:border-darkTertiary/50 bg-darkSurfaceLow/50 backdrop-blur px-8 py-4 rounded-xl text-sm font-semibold text-white transition-all hover:bg-darkSurfaceHigh flex items-center gap-2 shadow-inner h-btn-outline">
+              <i data-lucide="sparkles" class="h-4 w-4 text-darkTertiary inline-accent"></i>
+              <span>Live AI Signal Test</span>
+            </button>
+          </div>
+          
+          <!-- Live ticker -->
+          <div class="pt-6 border-t border-darkOutline/10 max-w-md hero-divider">
+            <div class="flex items-center gap-4 font-mono text-xs text-darkOnSurfaceVariant font-medium flex-wrap">
+              <span class="flex items-center gap-1.5"><span class="w-2 h-2 bg-green-500 rounded-full animate-ping"></span> Live Stewardship Feed:</span>
+              <span class="bg-darkSurfaceLow px-2.5 py-1 rounded-md text-green-400 font-bold border border-darkOutline/5">$AMEN <span class="text-[10px] text-darkOnSurfaceVariant">AI index</span> +0.44%</span>
+              <span class="bg-darkSurfaceLow px-2.5 py-1 rounded-md text-green-400 font-bold border border-darkOutline/5">$STWD <span class="text-[10px] text-darkOnSurfaceVariant">value</span> +1.89%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Premium Real-time candlestick interactive simulation on simulated laptop/glass card -->
+        <div class="relative group">
+          <div class="absolute -inset-1 bg-gradient-to-r from-darkTertiary/25 to-darkPrimary/25 rounded-2xl blur-2xl opacity-30 group-hover:opacity-60 transition duration-1000"></div>
+          
+          <!-- Card/Monitor simulation -->
+          <div class="relative glass-dark p-6 rounded-3xl border border-darkOutline/15 gold-glow neural-card bg-mesh h-[460px] flex flex-col justify-between">
+            <div class="flex justify-between items-center border-b border-darkOutline/10 pb-4">
+              <div class="flex items-center gap-2">
+                <i data-lucide="candlestick-chart" class="h-5 w-5 text-darkTertiary animate-bounce"></i>
+                <span class="font-mono text-xs font-bold text-white tracking-widest text-[#bec6e0] main-txt-primary">SANCTUM VISUAL TRADER (LIVE)</span>
+              </div>
+              <div class="flex gap-2">
+                <span class="w-3 h-3 bg-red-500 rounded-full"></span>
+                <span class="w-3 h-3 bg-yellow-500 rounded-full"></span>
+                <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+              </div>
+            </div>
+
+            <!-- Chart Canvas holder -->
+            <div class="flex-1 py-4 relative flex items-center justify-center">
+              <canvas id="landingChart" class="w-full h-full max-h-[290px]"></canvas>
+            </div>
+
+            <!-- Controls overlay -->
+            <div class="flex justify-between items-center bg-darkSurfaceLow/80 border border-darkOutline/5 rounded-xl p-3 select-bg">
+              <div class="flex items-center gap-3">
+                <button onclick="updateChartData('bullish')" class="bg-green-500/10 hover:bg-green-500/20 text-green-400 px-3 py-1.5 rounded-lg text-[10px] font-mono font-bold uppercase transition-all whitespace-nowrap">
+                  📈 Simulated Bull Run
+                </button>
+                <button onclick="updateChartData('bearish')" class="bg-red-500/10 hover:bg-red-500/20 text-red-400 px-3 py-1.5 rounded-lg text-[10px] font-mono font-bold uppercase transition-all whitespace-nowrap">
+                  📉 Bear Correction
+                </button>
+              </div>
+              <span class="font-mono text-[10px] text-darkOnSurfaceVariant leading-none text-right">Integrity Score: <b class="text-darkTertiary text-xs block">100% Verified</b></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bento Grid - Tri-modal Neural Engine Features -->
+    <section class="py-32 px-6 lg:px-16 max-w-7xl mx-auto">
+      <div class="text-center mb-20 space-y-4">
+        <div class="inline-block px-3 py-1 bg-darkTertiary/10 border border-darkTertiary/20 rounded-md text-xs font-mono text-darkTertiary inline-accent">Tri-Modal Analytics System</div>
+        <h2 class="font-display text-4xl font-extrabold text-white leading-tight h2-title">Divine Precision, Complete Stewardship</h2>
+        <p class="font-body-md text-darkOnSurfaceVariant max-w-2xl mx-auto">
+          Through three specialized artificial intelligence tracks, Sanctum AI ensures your investments are backed by mathematical superiority and moral alignment.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- AI Listening (Waveform interaction) -->
+        <div class="lg:col-span-7 glass-dark p-10 rounded-3xl flex flex-col justify-between group hover:border-darkTertiary/30 transition-all duration-500 hover:scale-[1.01] bento-card">
+          <div class="space-y-6">
+            <div class="w-14 h-14 rounded-2xl bg-darkTertiary/10 flex items-center justify-center text-darkTertiary inline-accent">
+              <i data-lucide="mic" class="h-7 w-7 text-darkTertiary"></i>
+            </div>
+            <h3 class="font-display text-2xl font-bold text-white">AI Audio Listening</h3>
+            <p class="font-body-md text-darkOnSurfaceVariant leading-relaxed">
+              Analyzes earnings calls, live conference reports, and financial podcasts in real time. Listens for moral cues, transparency vectors, and subtle verbal manipulation.
+            </p>
+          </div>
+          <!-- Interactive Waveform Area -->
+          <div class="mt-8 bg-darkSurfaceLow rounded-2xl p-6 border border-darkOutline/10 relative overflow-hidden select-bg">
+            <div class="flex justify-between items-center mb-4">
+              <span class="text-xs font-mono text-white tracking-wider flex items-center gap-1.5">
+                <span class="w-2 h-2 bg-yellow-400 rounded-full animate-ping"></span> Live Transcript Stream
+              </span>
+              <button onclick="toggleAudioWaveform()" id="audio-play-btn" class="bg-darkTertiary hover:bg-darkTertiaryContainer text-darkSurfaceLow px-4 py-1.5 rounded-lg text-xs font-mono font-bold transition-all flex items-center gap-1.5 shadow active:scale-95">
+                <i data-lucide="play" class="h-3.5 w-3.5 fill-darkSurfaceLow"></i> Play Signal
+              </button>
+            </div>
+            <!-- Pulse bars -->
+            <div class="h-20 flex items-center justify-center gap-1.5 opacity-60">
+              <div id="wave-1" class="w-2.5 bg-darkTertiary rounded-full h-8 transition-all duration-300"></div>
+              <div id="wave-2" class="w-2.5 bg-darkTertiary rounded-full h-12 transition-all duration-300"></div>
+              <div id="wave-3" class="w-2.5 bg-darkTertiary rounded-full h-4 transition-all duration-300"></div>
+              <div id="wave-4" class="w-2.5 bg-darkTertiary rounded-full h-16 transition-all duration-300"></div>
+              <div id="wave-5" class="w-2.5 bg-darkTertiary rounded-full h-10 transition-all duration-300"></div>
+              <div id="wave-6" class="w-2.5 bg-darkTertiary rounded-full h-7 transition-all duration-300"></div>
+              <div id="wave-7" class="w-2.5 bg-darkTertiary rounded-full h-14 transition-all duration-300"></div>
+              <div id="wave-8" class="w-2.5 bg-darkTertiary rounded-full h-3 transition-all duration-300"></div>
+            </div>
+            <!-- Live transcripts show/hide on play -->
+            <p id="audio-transcript-text" class="text-center font-mono text-[10px] text-darkOnSurfaceVariant mt-4 bg-darkSurfaceContainer p-2 rounded-lg border border-darkOutline/5 min-h-[32px] flex items-center justify-center">
+              Click 'Play Signal' to start real-time stewardship transcripts...
+            </p>
+          </div>
+        </div>
+
+        <!-- Text Analysis (Document Selector) -->
+        <div class="lg:col-span-5 glass-dark p-10 rounded-3xl flex flex-col justify-between group hover:border-darkTertiary/30 transition-all duration-500 hover:scale-[1.01] bento-card">
+          <div class="space-y-6">
+            <div class="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-darkPrimary inline-accent">
+              <i data-lucide="file-text" class="h-7 w-7 text-darkPrimary"></i>
+            </div>
+            <h3 class="font-display text-2xl font-bold text-white">Ethical Text Analysis</h3>
+            <p class="font-body-md text-darkOnSurfaceVariant leading-relaxed">
+              Scans complex 10-K declarations, news indices, and financial filings instantly using custom embeddings designed with an ethical worldview.
+            </p>
+          </div>
+          <!-- Document Selector Mock -->
+          <div class="mt-8 space-y-3">
+            <div onclick="selectDocument('doc1')" id="doc-btn-doc1" class="p-3.5 bg-darkSurfaceLow cursor-pointer hover:bg-darkSurfaceHigh transition-all border border-darkTertiary rounded-xl text-left select-bg">
+              <div class="flex justify-between items-center mb-1">
+                <span class="text-xs font-bold text-white">Q1 10-K Stewardship Report</span>
+                <span class="bg-green-500/10 text-green-400 px-2 py-0.5 rounded text-[9px] font-mono uppercase font-bold">100% Pure</span>
+              </div>
+              <p class="font-mono text-[10px] text-darkOnSurfaceVariant">Zero usury debt leverage found.</p>
+            </div>
+            <div onclick="selectDocument('doc2')" id="doc-btn-doc2" class="p-3.5 bg-darkSurfaceLow/50 cursor-pointer hover:bg-darkSurfaceHigh transition-all border border-darkOutline/5 rounded-xl text-left select-bg">
+              <div class="flex justify-between items-center mb-1">
+                <span class="text-xs font-bold text-white">BioTech Prospector Profile</span>
+                <span class="bg-yellow-500/10 text-yellow-400 px-2 py-0.5 rounded text-[9px] font-mono uppercase font-bold">Warning</span>
+              </div>
+              <p class="font-mono text-[10px] text-darkOnSurfaceVariant">Potential embryo cloning vectors diagnosed.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart Vision (Automated detection box) -->
+        <div class="lg:col-span-12 glass-dark p-10 rounded-3xl grid grid-cols-1 md:grid-cols-2 gap-10 items-center group hover:border-darkTertiary/30 transition-all duration-500 hover:scale-[1.01] bento-card">
+          <div class="space-y-6">
+            <div class="w-14 h-14 rounded-2xl bg-darkPrimary/10 flex items-center justify-center text-darkPrimary inline-accent">
+              <i data-lucide="eye" class="h-7 w-7 text-darkPrimary"></i>
+            </div>
+            <h3 class="font-display text-2xl font-bold text-white">Computer Chart Vision</h3>
+            <p class="font-body-md text-darkOnSurfaceVariant leading-relaxed">
+              Our vision neural framework analyzes raw visual candlestick data, predicting trend lines and chart anomalies with a stewardship-focused priority list.
+            </p>
+            <div class="grid grid-cols-2 gap-4 font-mono text-xs text-darkOnSurfaceVariant">
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="h-4 w-4 text-darkTertiary"></i> Double Bottom Trigger</div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="h-4 w-4 text-darkTertiary"></i> Support/Resistance</div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="h-4 w-4 text-darkTertiary"></i> Head & Shoulders</div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="h-4 w-4 text-darkTertiary"></i> Golden Cross Scan</div>
+            </div>
+          </div>
+          <!-- Canvas demo box -->
+          <div class="relative h-64 bg-darkSurfaceLow rounded-2xl p-4 overflow-hidden border border-darkOutline/10 select-bg flex flex-col justify-between">
+            <div class="flex justify-between items-center text-xs font-mono text-darkOnSurfaceVariant">
+              <span>PATTERN: BULLISH PENNANT</span>
+              <span class="text-darkTertiary font-bold">99.4% CONFIDENCE</span>
+            </div>
+            <!-- Candlestick mockup -->
+            <div class="flex-1 flex items-end justify-between px-8 py-4 relative">
+              <!-- Overlay indicator line -->
+              <div class="absolute inset-0 flex items-center">
+                <div class="w-full h-1 bg-gradient-to-r from-transparent via-darkTertiary to-transparent relative">
+                  <span class="absolute -top-1 right-[40%] bg-darkTertiary text-darkSurfaceLow text-[8px] px-1.5 py-0.5 rounded font-bold font-mono">BREAKOUT POINT</span>
+                </div>
+              </div>
+              <div class="w-4 bg-red-500/20 border-t-2 border-b-2 border-red-500 h-10 flex items-center justify-center relative"><span class="absolute h-16 w-0.5 bg-red-400"></span></div>
+              <div class="w-4 bg-green-500/20 border-t-2 border-b-2 border-green-500 h-20 flex items-center justify-center relative"><span class="absolute h-28 w-0.5 bg-green-400"></span></div>
+              <div class="w-4 bg-red-500/20 border-t-2 border-b-2 border-red-500 h-14 flex items-center justify-center relative"><span class="absolute h-20 w-0.5 bg-red-400"></span></div>
+              <div class="w-4 bg-green-500/20 border-t-2 border-b-2 border-green-500 h-28 flex items-center justify-center relative"><span class="absolute h-36 w-0.5 bg-green-400"></span></div>
+              <div class="w-4 bg-green-500/20 border-t-2 border-b-2 border-green-500 h-36 flex items-center justify-center relative"><span class="absolute h-44 w-0.5 bg-green-400"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission & Scripture Section -->
+    <section class="py-32 bg-darkSurfaceLow relative border-y border-darkOutline/5 section-mission-bg">
+      <div class="max-w-7xl mx-auto px-6 lg:px-16 flex flex-col lg:flex-row items-center gap-20">
+        <div class="w-full lg:w-1/2 relative group">
+          <div class="absolute -inset-2 bg-gradient-to-tr from-darkTertiary/10 class rounded-3xl blur-2xl opacity-60"></div>
+          <img class="rounded-3xl shadow-2xl border border-darkOutline/10 grayscale opacity-85 hover:grayscale-0 transition-all duration-700 w-full object-cover max-h-[440px]" alt="Modern Ethical Temple and Sanctuaries representing high trust and clear vision" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"/>
+        </div>
+        <div class="w-full lg:w-1/2 space-y-8">
+          <div class="inline-block px-3 py-1 bg-darkTertiary/10 border border-darkTertiary/20 rounded-md text-xs font-mono text-darkTertiary inline-accent">Our Sacred Mission</div>
+          <h2 class="font-display text-4xl font-extrabold text-white leading-tight h2-title">High-Performing Finance, <br/>Grounded in Eternal Truth</h2>
+          <p class="font-body-md text-darkOnSurfaceVariant leading-relaxed">
+            Faith with finance. We believe that deep analytical rigor shouldn't require trading your peace of mind or eternal steward responsibilities. We provide a transparent framework so investors can trade without friction and with complete confidence.
+          </p>
+          <div class="grid grid-cols-2 gap-8 border-y border-darkOutline/10 py-6 pr-12 hero-divider">
+            <div class="space-y-1">
+              <p class="font-display text-4xl font-bold text-darkTertiary tag-icon-color">100%</p>
+              <p class="text-xs font-mono uppercase tracking-wide text-darkOnSurfaceVariant">Privacy Focused</p>
+            </div>
+            <div class="space-y-1">
+              <p class="font-display text-4xl font-bold text-darkTertiary tag-icon-color">0</p>
+              <p class="text-xs font-mono uppercase tracking-wide text-darkOnSurfaceVariant">Moral Compromise</p>
+            </div>
+          </div>
+          <!-- Interactive Scripture Slider -->
+          <div class="bg-darkSurfaceContainer/40 border border-darkOutline/10 p-5 rounded-2xl relative select-bg">
+            <p class="font-mono text-xs text-darkTertiary italic mb-3 select-accent">"Wealth gained hastily will dwindle, but whoever gathers little by little will increase it."</p>
+            <p class="font-mono text-[10px] text-right font-bold tracking-widest text-darkOnSurfaceVariant uppercase mb-0">— PROVERBS 13:11</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marketing Action Block -->
+    <section class="py-32 px-6">
+      <div class="max-w-4xl mx-auto glass-dark rounded-[40px] p-12 md:p-20 text-center space-y-10 relative overflow-hidden bento-card">
+        <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-darkTertiary to-transparent opacity-60"></div>
+        <h2 class="font-display text-3xl md:text-5xl font-extrabold text-white leading-tight h2-title">Empower Your Portfolio. <br/>Download Scientifically Honest AI.</h2>
+        <p class="font-body-md text-darkOnSurfaceVariant max-w-xl mx-auto">
+          Take part in our exclusive close-beta list. Download Sanctum AI standalone package direct to macOS, or start immediately with our Chromium companion suite.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <button onclick="switchView('dashboard')" class="bg-darkTertiary text-darkSurfaceLow px-10 py-5 rounded-2xl font-bold text-sm tracking-wider active:scale-95 transition-all shadow-xl hover:shadow-darkTertiary/15 select-none cta-btn-class">
+            GET STARTED NOW
+          </button>
+          <a href="#listening" class="border border-darkOutline/25 hover:border-darkTertiary/50 bg-darkSurfaceLow/50 backdrop-blur px-10 py-5 rounded-2xl text-sm font-semibold text-white transition-all hover:bg-darkSurfaceHigh flex items-center justify-center gap-2 h-btn-outline">
+            <span>Learn Ecosystem</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- ============================================== -->
+  <!--           VIEW 2: STEWARDSHIP DASHBOARD        -->
+  <!-- ============================================== -->
+  <div id="view-dashboard" class="hidden min-h-screen neural-mesh hero-mesh-theme pt-24 pb-12">
+    <div class="max-w-7xl mx-auto px-6 lg:px-16 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Side Dashboard Navigation Panel -->
+      <div class="lg:col-span-3 glass-dark rounded-3xl p-6 space-y-8 sticky top-28 select-bg">
+        <div class="flex items-center gap-3 pb-6 border-b border-darkOutline/10 hero-divider">
+          <img alt="Admin Profile" class="w-11 h-11 rounded-xl bg-darkPrimary border border-darkOutline/20" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"/>
+          <div>
+            <span class="font-display text-sm font-bold text-white block nav-title-color">Sister Esther J.</span>
+            <span class="font-mono text-[9px] text-darkTertiary tracking-widest block uppercase nav-subtitle-color">HEAD OF ETHICAL FLOW</span>
+          </div>
+        </div>
+
+        <nav class="space-y-2">
+          <button class="w-full flex items-center gap-3 px-4 py-3 bg-darkTertiary/10 text-darkTertiary rounded-xl text-xs font-mono font-bold tracking-wider text-left side-tab-active">
+            <i data-lucide="layers" class="h-4.5 w-4.5"></i>
+            <span>DEPLOYMENTS</span>
+          </button>
+          <button onclick="alert('Analysis Suite is fully functional. Please upload a build model to begin tracking telemetry.')" class="w-full flex items-center gap-3 px-4 py-3 hover:bg-darkSurfaceHigh text-darkOnSurfaceVariant hover:text-white transition-all rounded-xl text-xs font-mono tracking-wider text-left">
+            <i data-lucide="bar-chart" class="h-4.5 w-4.5"></i>
+            <span>MARKET ST stewardship</span>
+          </button>
+          <button onclick="alert('Ethical filters are configured in your profile settings.')" class="w-full flex items-center gap-3 px-4 py-3 hover:bg-darkSurfaceHigh text-darkOnSurfaceVariant hover:text-white transition-all rounded-xl text-xs font-mono tracking-wider text-left">
+            <i data-lucide="shield" class="h-4.5 w-4.5"></i>
+            <span>ETHICAL AUDITS</span>
+          </button>
+          <button onclick="alert('Stewardship resources open online.')" class="w-full flex items-center gap-3 px-4 py-3 hover:bg-darkSurfaceHigh text-darkOnSurfaceVariant hover:text-white transition-all rounded-xl text-xs font-mono tracking-wider text-left">
+            <i data-lucide="book-open" class="h-4.5 w-4.5"></i>
+            <span>SCRIPTURE REVIEWS</span>
+          </button>
+        </nav>
+
+        <div class="pt-6 border-t border-darkOutline/10 space-y-2 text-[10px] font-mono text-darkOnSurfaceVariant hero-divider">
+          <div class="flex justify-between"><span>Scanner Version</span><span class="text-white">v1.0.4-L</span></div>
+          <div class="flex justify-between"><span>Audit Status</span><span class="text-green-400 font-bold flex items-center gap-1"><span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-ping"></span> ONLINE</span></div>
+        </div>
+      </div>
+
+      <!-- Main Dashboard Panel Area -->
+      <div class="lg:col-span-9 space-y-8">
+        
+        <!-- Live Counters Grid row -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="glass-dark p-6 rounded-2xl flex items-center gap-4 bento-card">
+            <div class="p-3.5 rounded-xl bg-darkTertiary/10 text-darkTertiary inline-accent">
+              <i data-lucide="download" class="h-6 w-6"></i>
+            </div>
+            <div>
+              <span class="text-[10px] font-mono uppercase tracking-wider text-darkOnSurfaceVariant block">Total Downloads</span>
+              <span class="font-display text-2xl font-bold text-white tracking-tight">124,802</span>
+            </div>
+          </div>
+          <div class="glass-dark p-6 rounded-2xl flex items-center gap-4 bento-card">
+            <div class="p-3.5 rounded-xl bg-darkPrimary/10 text-darkPrimary inline-accent">
+              <i data-lucide="users" class="h-6 w-6"></i>
+            </div>
+            <div>
+              <span class="text-[10px] font-mono uppercase tracking-wider text-darkOnSurfaceVariant block">Active Stewards</span>
+              <span class="font-display text-2xl font-bold text-white tracking-tight">89,450</span>
+            </div>
+          </div>
+          <div class="glass-dark p-6 rounded-2xl flex items-center gap-4 bento-card">
+            <div class="p-3.5 rounded-xl bg-darkOnSurfaceVariant/15 text-white inline-accent">
+              <i data-lucide="terminal" class="h-6 w-6"></i>
+            </div>
+            <div>
+              <span class="text-[10px] font-mono uppercase tracking-wider text-darkOnSurfaceVariant block">Current Revision</span>
+              <span class="font-display text-2xl font-bold text-white tracking-tight">v2.4.1-STWD</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+          
+          <!-- Column 1: Deploy Artifact Forms -->
+          <div class="md:col-span-12 lg:col-span-5 glass-dark p-6 rounded-3xl border border-darkOutline/5 space-y-6 bento-card select-bg">
+            <div>
+              <h3 class="font-display text-lg font-bold text-white">Upload New Deployment</h3>
+              <p class="text-[11px] text-darkOnSurfaceVariant">Initiate automatically aligned stewardship build scan.</p>
+            </div>
+
+            <!-- Interative Upload Box -->
+            <div class="space-y-4">
+              <label class="block">
+                <span class="sr-only">Choose build file</span>
+                <input type="file" id="dashboard-file-input" onchange="handleFileSelect()" class="block w-full text-xs text-darkOnSurfaceVariant
+                  file:mr-4 file:py-2.5 file:px-4
+                  file:rounded-xl file:border-0
+                  file:text-xs file:font-mono file:font-semibold
+                  file:bg-darkTertiary/10 file:text-darkTertiary
+                  hover:file:bg-darkTertiary/20 file-upload-btn-colors cursor-pointer
+                "/>
+              </label>
+
+              <!-- Progress bar on deployment -->
+              <div id="scanner-progress-container" class="hidden bg-darkSurfaceLow p-4 rounded-xl border border-darkOutline/10 space-y-3">
+                <div class="flex justify-between items-center font-mono text-[10px]">
+                  <span id="scan-status-label" class="text-darkTertiary animate-pulse">Initializing Scan...</span>
+                  <span id="scan-percentage-label" class="font-bold text-white">0%</span>
+                </div>
+                <div class="w-full bg-darkSurfaceContainer rounded-full h-1.5 overflow-hidden">
+                  <div id="scan-progress-bar" class="bg-darkTertiary h-full transition-all duration-300" style="width: 0%"></div>
+                </div>
+              </div>
+
+              <!-- Extra form inputs -->
+              <div class="space-y-1.5">
+                <span class="font-mono text-[10px] tracking-wider text-darkOnSurfaceVariant uppercase block font-semibold">Build Revision Version</span>
+                <input type="text" id="build-version-input" value="2.4.2" class="w-full bg-darkSurfaceLow border border-darkOutline/15 rounded-xl px-4 py-2.5 font-mono text-xs text-white focus:ring-1 focus:ring-darkTertiary focus:border-darkTertiary outline-none form-input-theme"/>
+              </div>
+
+              <div class="space-y-1.5">
+                <span class="font-mono text-[10px] tracking-wider text-darkOnSurfaceVariant uppercase block font-semibold">Stewardship Manifest Note</span>
+                <textarea id="build-notes-input" class="w-full bg-darkSurfaceLow border border-darkOutline/15 rounded-xl px-4 py-2.5 font-mono text-xs text-white focus:ring-1 focus:ring-darkTertiary focus:border-darkTertiary outline-none form-input-theme" rows="3">Transparent loan metrics verified. Usury checking passed.</textarea>
+              </div>
+
+              <!-- Deploy Action Button -->
+              <button onclick="deployNewBuild()" class="w-full bg-gradient-to-b from-darkTertiary to-darkTertiaryContainer text-darkSurfaceLow py-3.5 rounded-xl font-bold font-mono text-xs tracking-widest hover:opacity-90 transition-all shadow active:scale-95 flex items-center justify-center gap-2 cta-btn-class">
+                <i data-lucide="rocket" class="h-4 w-4"></i> DEPLOY SYSTEM ARTIFACTS
+              </button>
+            </div>
+          </div>
+
+          <!-- Column 2: Build History logs / filters / search -->
+          <div class="md:col-span-12 lg:col-span-7 space-y-6">
+            <div class="glass-dark rounded-3xl border border-darkOutline/5 overflow-hidden bento-card select-bg">
+              
+              <!-- Quick search & category Filter header -->
+              <div class="p-6 border-b border-darkOutline/10 flex flex-col md:flex-row gap-4 justify-between items-center bg-darkSurfaceLow/50 hero-divider">
+                <div class="relative w-full md:w-3/5">
+                  <i data-lucide="search" class="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-darkOnSurfaceVariant"></i>
+                  <input type="text" id="search-query-input" onkeyup="filterHistoryTable()" placeholder="Query by version or notes..." class="w-full pl-9 pr-4 py-2.5 bg-darkSurfaceLow border border-darkOutline/10 rounded-xl font-mono text-xs text-white focus:ring-1 focus:ring-darkTertiary focus:border-darkTertiary outline-none form-input-theme"/>
+                </div>
+                <div class="flex items-center gap-2 font-mono text-[10px]">
+                  <span class="text-darkOnSurfaceVariant">Platforms:</span>
+                  <select id="platform-filter-select" onchange="filterHistoryTable()" class="bg-darkSurfaceLow border border-darkOutline/10 rounded-xl px-3 py-1.5 text-[10px] text-white font-mono font-bold focus:ring-darkTertiary select-dropdown-theme">
+                    <option value="all">All Ecosystem</option>
+                    <option value="macOS">macOS</option>
+                    <option value="Chrome">Chrome Ext</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Animated Responsive Table -->
+              <div class="overflow-x-auto">
+                <table class="w-full border-collapse font-mono text-xs text-left">
+                  <thead>
+                    <tr class="bg-darkSurfaceLow/70 text-darkOnSurfaceVariant">
+                      <th class="p-4 border-b border-darkOutline/10">VERSION</th>
+                      <th class="p-4 border-b border-darkOutline/10">ECOSYSTEM</th>
+                      <th class="p-4 border-b border-darkOutline/10">SIZE</th>
+                      <th class="p-4 border-b border-darkOutline/10">INTEGRITY</th>
+                      <th class="p-4 border-b border-darkOutline/10"></th>
+                    </tr>
+                  </thead>
+                  <tbody id="history-table-body" class="divide-y divide-darkOutline/10">
+                    <!-- Row 1 -->
+                    <tr class="table-row-item hover:bg-darkSurfaceLow/50 transition-colors" data-platform="macOS" data-version="v2.4.1" data-notes="Stable release candidate">
+                      <td class="p-4 font-bold text-white">v2.4.1</td>
+                      <td class="p-4">
+                        <span class="flex items-center gap-1.5"><i data-lucide="laptop" class="h-3.5 w-3.5 text-darkPrimary inline-accent"></i> macOS (.dmg)</span>
+                      </td>
+                      <td class="p-4 text-darkOnSurfaceVariant">142.5 MB</td>
+                      <td class="p-4">
+                        <span class="bg-green-500/10 text-green-400 font-bold px-2 py-0.5 rounded text-[9px] uppercase tracking-wide">Steward Active</span>
+                      </td>
+                      <td class="p-4 text-right">
+                        <button onclick="removeBuildRow(this)" class="p-1 px-2.5 rounded-lg border border-red-500/30 text-red-400 bg-red-500/10 hover:bg-red-500/20 hover:border-red-500 transition-all text-[10px] font-bold">Revoke</button>
+                      </td>
+                    </tr>
+                    <!-- Row 2 -->
+                    <tr class="table-row-item hover:bg-darkSurfaceLow/50 transition-colors" data-platform="Chrome" data-version="v2.4.1" data-notes="Browser companion build">
+                      <td class="p-4 font-bold text-white">v2.4.1</td>
+                      <td class="p-4">
+                        <span class="flex items-center gap-1.5"><i data-lucide="chrome" class="h-3.5 w-3.5 text-darkPrimary inline-accent"></i> Chrome (.zip)</span>
+                      </td>
+                      <td class="p-4 text-darkOnSurfaceVariant">18.2 MB</td>
+                      <td class="p-4">
+                        <span class="bg-green-500/10 text-green-400 font-bold px-2 py-0.5 rounded text-[9px] uppercase tracking-wide">Steward Active</span>
+                      </td>
+                      <td class="p-4 text-right">
+                        <button onclick="removeBuildRow(this)" class="p-1 px-2.5 rounded-lg border border-red-500/30 text-red-400 bg-red-500/10 hover:bg-red-500/20 hover:border-red-500 transition-all text-[10px] font-bold">Revoke</button>
+                      </td>
+                    </tr>
+                    <!-- Row 3 -->
+                    <tr class="table-row-item hover:bg-darkSurfaceLow/50 transition-colors opacity-70" data-platform="macOS" data-version="v2.3.9" data-notes="Previous stable image">
+                      <td class="p-4 font-bold text-white">v2.3.9</td>
+                      <td class="p-4">
+                        <span class="flex items-center gap-1.5"><i data-lucide="laptop" class="h-3.5 w-3.5 text-darkPrimary inline-accent"></i> macOS (.pkg)</span>
+                      </td>
+                      <td class="p-4 text-darkOnSurfaceVariant">138.1 MB</td>
+                      <td class="p-4">
+                        <span class="bg-darkSurfaceHigh text-darkOnSurfaceVariant font-bold px-2 py-0.5 rounded text-[9px] uppercase tracking-wide">Archived</span>
+                      </td>
+                      <td class="p-4 text-right">
+                        <button onclick="removeBuildRow(this)" class="p-1 px-2.5 rounded-lg border border-red-500/30 text-red-400 bg-red-500/10 hover:bg-red-500/20 hover:border-red-500 transition-all text-[10px] font-bold">Revoke</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Dashboard Informational alert box -->
+            <div class="p-6 bg-gradient-to-r from-darkPrimaryContainer to-darkSurfaceContainer border border-darkOutline/10 rounded-3xl flex items-start gap-4">
+              <div class="p-2 bg-darkTertiary/10 rounded-xl text-darkTertiary inline-accent">
+                <i data-lucide="verified" class="h-6 w-6"></i>
+              </div>
+              <div class="space-y-1">
+                <span class="font-display font-bold text-white text-sm block">14-Point Automated Integrity Scan</span>
+                <p class="text-xs text-darkOnSurfaceVariant leading-relaxed">
+                  Before deployment, of primary importance is that all algorithm builds undergo rigorous checks for usurious variables, bias models, human labor exploitation tags, and ecological risk ratings.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ============================================== -->
+  <!--                 FOOTER AREA                    -->
+  <!-- ============================================== -->
+  <footer class="bg-darkSurfaceContainer border-t border-darkOutline/5 py-12 relative z-10 footer-theme-class">
+    <div class="max-w-7xl mx-auto px-6 lg:px-16 flex flex-col md:flex-row justify-between items-center gap-6">
+      
+      <!-- Brand & Copy right -->
+      <div class="flex flex-col md:flex-row items-center gap-3 text-center md:text-left">
+        <span class="font-display text-sm font-bold text-white f-brand-text">Sanctum AI</span>
+        <span class="hidden md:inline h-4 w-px bg-darkOutline/25"></span>
+        <span class="font-mono text-[10px] text-darkOnSurfaceVariant">© 2026 Sanctum AI. Stewardship through intelligence. Crafted by Author <strong>Dmytro Nekrasov</strong>. All copyrights belong to Dmytro Nekrasov.</span>
+      </div>
+
+      <!-- Footer Policy Links -->
+      <div class="flex items-center gap-6 font-mono text-[10px] text-darkOnSurfaceVariant">
+        <a href="#" class="hover:text-darkTertiary transition-colors footer-link-hover">Privacy Statement</a>
+        <a href="#" class="hover:text-darkTertiary transition-colors footer-link-hover">Terms of Stewardship</a>
+        <a href="#" class="hover:text-darkTertiary transition-colors footer-link-hover">Ethical Canon</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ============================================== -->
+  <!--             APPLICATION SCRIPT                 -->
+  <!-- ============================================== -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Theme state
+    let isDark = true;
+
+    // View State (landing or dashboard)
+    let currentView = 'landing';
+
+    // Interactive Waveform Audio play status
+    let audioPlaying = false;
+    let waveInterval;
+
+    // Live Chart object
+    let chartsInstance = null;
+    let chartPrices = [120, 122, 121, 123, 125, 124, 127, 126, 129, 131, 130, 134];
+    let chartLabels = ['9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30'];
+
+    window.onload = function() {
+      renderAnimatedChart();
+    };
+
+    /**
+     * Switch view between landing page and dashboard
+     */
+    function switchView(viewName) {
+      currentView = viewName;
+      
+      const landingView = document.getElementById('view-landing');
+      const dashboardView = document.getElementById('view-dashboard');
+      
+      const btnLanding = document.getElementById('tab-btn-landing');
+      const btnDashboard = document.getElementById('tab-btn-dashboard');
+      
+      if (viewName === 'landing') {
+        landingView.classList.remove('hidden');
+        landingView.classList.add('block');
+        dashboardView.classList.add('hidden');
+        dashboardView.classList.remove('block');
+
+        // Style tabs
+        btnLanding.className = isDark 
+          ? "px-5 py-2.5 rounded-lg text-xs font-semibold tracking-wide flex items-center gap-2 transition-all bg-darkTertiary text-darkSurfaceLow shadow active-tab-class"
+          : "px-5 py-2.5 rounded-lg text-xs font-semibold tracking-wide flex items-center gap-2 transition-all bg-lightPrimary text-white shadow active-tab-class";
+        
+        btnDashboard.className = "px-5 py-2.5 rounded-lg text-xs font-semibold tracking-wide flex items-center gap-2 transition-all hover:text-white text-darkOnSurfaceVariant inactive-tab-class";
+      } else {
+        dashboardView.classList.remove('hidden');
+        dashboardView.classList.add('block');
+        landingView.classList.add('hidden');
+        landingView.classList.remove('block');
+
+        // Style tabs
+        btnDashboard.className = isDark 
+          ? "px-5 py-2.5 rounded-lg text-xs font-semibold tracking-wide flex items-center gap-2 transition-all bg-darkTertiary text-darkSurfaceLow shadow active-tab-class"
+          : "px-5 py-2.5 rounded-lg text-xs font-semibold tracking-wide flex items-center gap-2 transition-all bg-lightPrimary text-white shadow active-tab-class";
+        
+        btnLanding.className = "px-5 py-2.5 rounded-lg text-xs font-semibold tracking-wide flex items-center gap-2 transition-all hover:text-white text-darkOnSurfaceVariant inactive-tab-class";
+      }
+      
+      // Re-trigger icon render
+      lucide.createIcons();
+    }
+
+    /**
+     * Toggles between Theme modes with unique styling class assignments
+     */
+    function toggleTheme() {
+      isDark = !isDark;
+      const htmlEl = document.documentElement;
+      const bodyEl = document.body;
+      const themeIcon = document.getElementById('theme-icon');
+
+      if (isDark) {
+        // Apply Dark mode
+        htmlEl.classList.add('dark');
+        bodyEl.className = "bg-darkSurface text-darkOnSurface font-sans selection:bg-darkTertiary selection:text-darkSurfaceContainer transition-colors duration-300";
+        themeIcon.setAttribute('data-lucide', 'sun');
+
+        // Restore Dark specific themes manually
+        updateCustomThemeElements(true);
+      } else {
+        // Apply Light mode
+        htmlEl.classList.remove('dark');
+        bodyEl.className = "bg-lightSurface text-lightOnSurface font-sans selection:bg-lightSecondaryContainer selection:text-lightOnSecondaryContainer transition-colors duration-300";
+        themeIcon.setAttribute('data-lucide', 'moon');
+
+        updateCustomThemeElements(false);
+      }
+
+      // Re-render Lucide
+      lucide.createIcons();
+      renderAnimatedChart();
+    }
+
+    /**
+     * Updates classes on custom components depending on Theme state
+     */
+    function updateCustomThemeElements(darkModeActive) {
+      const headers = document.querySelectorAll('.navbar-theme-class');
+      const footers = document.querySelectorAll('.footer-theme-class');
+      const tabs = document.querySelectorAll('.select-bg');
+      const cardElements = document.querySelectorAll('.bento-card');
+      const inputs = document.querySelectorAll('.form-input-theme');
+      const buttons = document.querySelectorAll('.cta-btn-class');
+      const outlineButtons = document.querySelectorAll('.h-btn-outline');
+      const dividers = document.querySelectorAll('.hero-divider');
+      const meshes = document.querySelectorAll('.hero-mesh-theme');
+      const dropdowns = document.querySelectorAll('.select-dropdown-theme');
+
+      if (darkModeActive) {
+        headers.forEach(el => el.className = "fixed top-0 w-full z-50 bg-darkSurfaceLow/80 backdrop-blur-xl border-b border-darkOutline/10 shadow-sm navbar-theme-class");
+        footers.forEach(el => el.className = "bg-darkSurfaceContainer border-t border-darkOutline/5 py-12 relative z-10 footer-theme-class");
+        tabs.forEach(el => el.className = "hidden md:flex items-center bg-darkSurfaceContainer/60 border border-darkOutline/15 p-1 rounded-xl shadow-inner select-bg");
+        cardElements.forEach(el => {
+          if (el.classList.contains('glass-light')) {
+            el.classList.remove('glass-light');
+            el.classList.add('glass-dark');
+          }
+        });
+        inputs.forEach(el => el.className = "w-full bg-darkSurfaceLow border border-darkOutline/15 rounded-xl px-4 py-2.5 font-mono text-xs text-white focus:ring-1 focus:ring-darkTertiary focus:border-darkTertiary outline-none form-input-theme");
+        buttons.forEach(el => el.className = "bg-gradient-to-b from-darkTertiary to-darkTertiaryContainer text-darkSurfaceLow px-8 py-4 rounded-xl font-bold text-sm hover:shadow-xl hover:shadow-darkTertiary/15 transition-all flex items-center gap-2 group active:scale-95 select-none cta-btn-class");
+        outlineButtons.forEach(el => el.className = "border border-darkOutline/25 hover:border-darkTertiary/50 bg-darkSurfaceLow/50 backdrop-blur px-8 py-4 rounded-xl text-sm font-semibold text-white transition-all hover:bg-darkSurfaceHigh flex items-center gap-2 shadow-inner h-btn-outline");
+        dividers.forEach(el => el.className = "pt-6 border-t border-darkOutline/10 max-w-md hero-divider");
+        meshes.forEach(el => el.className = "relative min-h-[90vh] flex items-center overflow-hidden neural-mesh hero-mesh-theme");
+        dropdowns.forEach(el => el.className = "bg-darkSurfaceLow border border-darkOutline/10 rounded-xl px-3 py-1.5 text-[10px] text-white font-mono font-bold focus:ring-darkTertiary select-dropdown-theme");
+
+        // Restore Active tab
+        document.getElementById('tab-btn-landing').className = "px-5 py-2.5 rounded-lg text-xs font-semibold tracking-wide flex items-center gap-2 transition-all bg-darkTertiary text-darkSurfaceLow shadow active-tab-class";
+      } else {
+        headers.forEach(el => el.className = "fixed top-0 w-full z-50 bg-lightSurfaceLow/80 backdrop-blur-xl border-b border-lightOutline/10 shadow-sm navbar-theme-class");
+        footers.forEach(el => el.className = "bg-lightSurfaceContainer border-t border-lightOutline/10 py-12 relative z-10 footer-theme-class");
+        tabs.forEach(el => el.className = "hidden md:flex items-center bg-lightSurfaceContainer p-1 rounded-xl shadow-inner select-bg");
+        cardElements.forEach(el => {
+          if (el.classList.contains('glass-dark')) {
+            el.classList.remove('glass-dark');
+            el.classList.add('glass-light');
+          }
+        });
+        inputs.forEach(el => el.className = "w-full bg-lightSurfaceLow border border-lightOutline/15 rounded-xl px-4 py-2.5 font-mono text-xs text-lightOnSurface focus:ring-1 focus:ring-lightPrimary focus:border-lightPrimary outline-none form-input-theme");
+        buttons.forEach(el => el.className = "bg-lightPrimary text-white px-8 py-4 rounded-xl font-bold text-sm tracking-wide transition-all flex items-center gap-2 group active:scale-95 select-none cta-btn-class");
+        outlineButtons.forEach(el => el.className = "border border-lightOutline/25 hover:border-lightPrimary/50 bg-lightSurfaceLow/50 backdrop-blur px-8 py-4 rounded-xl text-sm font-semibold text-lightOnSurface transition-all hover:bg-lightSurfaceHigh flex items-center gap-2 shadow-inner h-btn-outline");
+        dividers.forEach(el => el.className = "pt-6 border-t border-lightOutline/15 max-w-md hero-divider");
+        meshes.forEach(el => el.className = "relative min-h-[90vh] flex items-center overflow-hidden neural-mesh-light hero-mesh-theme");
+        dropdowns.forEach(el => el.className = "bg-lightSurfaceLow border border-lightOutline/10 rounded-xl px-3 py-1.5 text-[10px] text-lightOnSurface font-mono font-bold focus:ring-lightPrimary select-dropdown-theme");
+
+        // Restore Active tab
+        document.getElementById('tab-btn-landing').className = "px-5 py-2.5 rounded-lg text-xs font-semibold tracking-wide flex items-center gap-2 transition-all bg-lightPrimary text-white shadow active-tab-class";
+      }
+    }
+
+    /**
+     * Renders high-fidelity line chart to represent advanced stock/candlestick metrics
+     */
+    function renderAnimatedChart() {
+      const ctx = document.getElementById('landingChart').getContext('2d');
+      
+      if (chartsInstance) {
+        chartsInstance.destroy();
+      }
+
+      const accentColor = isDark ? '#e9c349' : '#001b44';
+      const gridColor = isDark ? 'rgba(144, 144, 151, 0.08)' : 'rgba(117, 117, 127, 0.1)';
+
+      // Gradient Fill
+      const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+      gradient.addColorStop(0, isDark ? 'rgba(233, 195, 73, 0.15)' : 'rgba(0, 27, 68, 0.15)');
+      gradient.addColorStop(1, 'rgba(0, 27, 68, 0)');
+
+      chartsInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: chartLabels,
+          datasets: [{
+            label: 'Index Value',
+            data: chartPrices,
+            borderColor: accentColor,
+            borderWidth: 2.5,
+            fill: true,
+            backgroundColor: gradient,
+            tension: 0.35,
+            pointRadius: 4,
+            pointBackgroundColor: accentColor,
+            pointBorderColor: '#ffffff',
+            pointHoverRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            x: {
+              grid: { color: gridColor },
+              ticks: { color: isDark ? '#c6c6cd' : '#44474f', font: { family: 'JetBrains Mono', size: 9 } }
+            },
+            y: {
+              grid: { color: gridColor },
+              ticks: { color: isDark ? '#c6c6cd' : '#44474f', font: { family: 'JetBrains Mono', size: 9 } }
+            }
+          }
+        }
+      });
+    }
+
+    /**
+     * Simulates live market update via buttons with chart shifts
+     */
+    function updateChartData(trend) {
+      if (trend === 'bullish') {
+        chartPrices = [120, 122, 121, 125, 128, 126, 131, 130, 135, 139, 136, 144];
+      } else {
+        chartPrices = [120, 118, 119, 116, 114, 115, 111, 113, 108, 110, 107, 103];
+      }
+      renderAnimatedChart();
+    }
+
+    /**
+     * Triggers active animated wave bar sequence
+     */
+    function animateWaveformForce() {
+      // Toggle waveform button state
+      const playBtn = document.getElementById('audio-play-btn');
+      playBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      toggleAudioWaveform();
+    }
+
+    /**
+     * Simulates live transcripting of ethical audits
+     */
+    function toggleAudioWaveform() {
+      audioPlaying = !audioPlaying;
+      const playBtn = document.getElementById('audio-play-btn');
+      const transcriptLabel = document.getElementById('audio-transcript-text');
+
+      if (audioPlaying) {
+        playBtn.innerHTML = `<i data-lucide="square" class="h-3.5 w-3.5 fill-darkSurfaceLow"></i> Pause`;
+        transcriptLabel.innerText = "Transcribing: 'Verifying equity leverage index. Scanning for unaligned usury algorithms...'";
+
+        const texts = [
+          "Transcribing: 'Verifying equity leverage index. Scanning for unaligned usury algorithms...'",
+          "Transcribing: 'Moral integrity check complete. Financial transparency verified at 100% optimum.'",
+          "Transcribing: 'Reviewing employee compensation ratios. No local stewardship issues diagnosed.'",
+          "Transcribing: 'Anomalies cleared. Sanctum ethical parameters align.'"
+        ];
+
+        let index = 1;
+        waveInterval = setInterval(() => {
+          // Rand heights
+          for (let i = 1; i <= 8; i++) {
+            const h = Math.floor(Math.random() * 64) + 16;
+            document.getElementById(`wave-${i}`).style.height = `${h}px`;
+          }
+          transcriptLabel.innerText = texts[index % texts.length];
+          index++;
+        }, 1000);
+      } else {
+        playBtn.innerHTML = `<i data-lucide="play" class="h-3.5 w-3.5 fill-darkSurfaceLow"></i> Play Signal`;
+        clearInterval(waveInterval);
+        resetWaveformHeights();
+        transcriptLabel.innerText = "Click 'Play Signal' to start real-time stewardship transcripts...";
+      }
+
+      lucide.createIcons();
+    }
+
+    function resetWaveformHeights() {
+      const heights = [32, 48, 16, 64, 40, 28, 56, 12];
+      for (let i = 1; i <= 8; i++) {
+        document.getElementById(`wave-${i}`).style.height = `${heights[i-1]}px`;
+      }
+    }
+
+    /**
+     * Interactive text document selection
+     */
+    function selectDocument(docId) {
+      const doc1 = document.getElementById('doc-btn-doc1');
+      const doc2 = document.getElementById('doc-btn-doc2');
+
+      if (docId === 'doc1') {
+        doc1.className = "p-3.5 bg-darkSurfaceLow cursor-pointer hover:bg-darkSurfaceHigh transition-all border border-darkTertiary rounded-xl text-left select-bg";
+        doc2.className = "p-3.5 bg-darkSurfaceLow/50 cursor-pointer hover:bg-darkSurfaceHigh transition-all border border-darkOutline/5 rounded-xl text-left select-bg";
+      } else {
+        doc1.className = "p-3.5 bg-darkSurfaceLow/50 cursor-pointer hover:bg-darkSurfaceHigh transition-all border border-darkOutline/5 rounded-xl text-left select-bg";
+        doc2.className = "p-3.5 bg-darkSurfaceLow cursor-pointer hover:bg-darkSurfaceHigh transition-all border border-darkTertiary rounded-xl text-left select-bg";
+      }
+    }
+
+    /**
+     * File Selection mockup for Dashboard
+     */
+    function handleFileSelect() {
+      const fileInput = document.getElementById('dashboard-file-input');
+      if (fileInput.files.length > 0) {
+        alert(`Selected Build: ${fileInput.files[0].name}. Ready for stewardship moral scan!`);
+      }
+    }
+
+    /**
+     * Mock-deploys a new build, triggering a spectacular progressive 14-point ethical scan bar. Appends row at completion!
+     */
+    function deployNewBuild() {
+      const fileInput = document.getElementById('dashboard-file-input');
+      const versionInput = document.getElementById('build-version-input').value.trim();
+      const notesInput = document.getElementById('build-notes-input').value.trim();
+
+      if (!versionInput || !notesInput) {
+        alert('Please fill out both the Version and Stewardship Manifest notes.');
+        return;
+      }
+
+      const progressContainer = document.getElementById('scanner-progress-container');
+      const progressBar = document.getElementById('scan-progress-bar');
+      const statusLabel = document.getElementById('scan-status-label');
+      const percentageLabel = document.getElementById('scan-percentage-label');
+
+      progressContainer.classList.remove('hidden');
+      
+      const scanMilestones = [
+        { percentage: 15, msg: "Auditing usury index vectors..." },
+        { percentage: 35, msg: "Validating labor compensation standards..." },
+        { percentage: 65, msg: "Inspecting weapons trade supply links..." },
+        { percentage: 85, msg: "Checking clean environmental reports..." },
+        { percentage: 100, msg: "MORAL STEWARDSHIP REVIEW APPROVED." }
+      ];
+
+      let currentIndex = 0;
+      let progress = 0;
+
+      const incrementInterval = setInterval(() => {
+        progress += 5;
+        if (progress > 100) {
+          progress = 100;
+        }
+
+        progressBar.style.width = `${progress}%`;
+        percentageLabel.innerText = `${progress}%`;
+
+        // Check milestones
+        if (currentIndex < scanMilestones.length && progress >= scanMilestones[currentIndex].percentage) {
+          statusLabel.innerText = scanMilestones[currentIndex].msg;
+          currentIndex++;
+        }
+
+        if (progress >= 100) {
+          clearInterval(incrementInterval);
+          setTimeout(() => {
+            // Append row dynamically to version table history
+            appendNewVersionRow(versionInput, notesInput);
+            
+            // Success reset
+            alert(`SUCCESS: Revision v${versionInput} validated and securely added to version grid.`);
+            progressContainer.classList.add('hidden');
+            progressBar.style.width = '0%';
+            percentageLabel.innerText = '0%';
+            statusLabel.innerText = 'Initializing scan...';
+          }, 800);
+        }
+      }, 150);
+    }
+
+    /**
+     * Appends a newly created row with modern animations into the table
+     */
+    function appendNewVersionRow(version, notes) {
+      const tableBody = document.getElementById('history-table-body');
+      
+      // We will generate the platform type randomly as macOS or Chrome to keep it fresh
+      const isMac = Math.random() > 0.5;
+      const platformText = isMac ? 'macOS (.dmg)' : 'Chrome (.zip)';
+      const platformIcon = isMac ? 'laptop' : 'chrome';
+      const sizeText = isMac ? `${(Math.random() * 40 + 100).toFixed(1)} MB` : `${(Math.random() * 5 + 15).toFixed(1)} MB`;
+
+      const today = new Date();
+      const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      const dateString = `${monthNames[today.getMonth()]} ${today.getDate()}, ${today.getFullYear()}`;
+
+      const rowHtml = `
+        <tr class="table-row-item hover:bg-darkSurfaceLow/50 transition-colors animate-pulse" data-platform="${isMac ? 'macOS' : 'Chrome'}" data-version="v${version}" data-notes="${notes}">
+          <td class="p-4 font-bold text-white">v${version}</td>
+          <td class="p-4">
+            <span class="flex items-center gap-1.5"><i data-lucide="${platformIcon}" class="h-3.5 w-3.5 text-darkPrimary inline-accent"></i> ${platformText}</span>
+          </td>
+          <td class="p-4 text-darkOnSurfaceVariant">${dateString}</td>
+          <td class="p-4 text-darkOnSurfaceVariant">${sizeText}</td>
+          <td class="p-4">
+            <span class="bg-green-500/10 text-green-400 font-bold px-2 py-0.5 rounded text-[9px] uppercase tracking-wide">Steward Active</span>
+          </td>
+          <td class="p-4 text-right">
+            <button onclick="removeBuildRow(this)" class="p-1 px-2.5 rounded-lg border border-red-500/30 text-red-400 bg-red-500/10 hover:bg-red-500/20 hover:border-red-500 transition-all text-[10px] font-bold">Revoke</button>
+          </td>
+        </tr>
+      `;
+
+      // Insert at front
+      tableBody.insertAdjacentHTML('afterbegin', rowHtml);
+      lucide.createIcons();
+    }
+
+    /**
+     * Remove or revoke row item
+     */
+    function removeBuildRow(btnElement) {
+      if (confirm('Revoke and pull this build version from distribution?')) {
+        const row = btnElement.closest('tr');
+        row.remove();
+      }
+    }
+
+    /**
+     * Filter table content based on search queries and category dropdown selects
+     */
+    function filterHistoryTable() {
+      const query = document.getElementById('search-query-input').value.toLowerCase().trim();
+      const selectedPlatform = document.getElementById('platform-filter-select').value;
+      const rows = document.querySelectorAll('.table-row-item');
+
+      rows.forEach(row => {
+        const version = row.getAttribute('data-version').toLowerCase();
+        const notes = row.getAttribute('data-notes').toLowerCase();
+        const platform = row.getAttribute('data-platform');
+
+        const queryMatch = version.includes(query) || notes.includes(query);
+        const platformMatch = selectedPlatform === 'all' || platform === selectedPlatform;
+
+        if (queryMatch && platformMatch) {
+          row.classList.remove('hidden');
+        } else {
+          row.classList.add('hidden');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
