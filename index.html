@@ -172,6 +172,9 @@
       background-color: rgba(0, 2, 10, 0.06) !important;
       color: #00020a !important;
     }
+    #scripture-text, #scripture-citation {
+      transition: opacity 0.15s ease-in-out;
+    }
   </style>
 </head>
 <body class="bg-lightSurface text-lightOnSurface font-sans selection:bg-lightSecondaryContainer selection:text-lightOnSecondaryContainer transition-colors duration-300">
@@ -563,9 +566,30 @@
             </div>
           </div>
           <!-- Interactive Scripture Slider -->
-          <div class="bg-darkSurfaceContainer/40 border border-darkOutline/10 p-5 rounded-2xl relative select-bg">
-            <p class="font-mono text-xs text-darkTertiary italic mb-3 select-accent">"Proprietary visual data and microphone feeds are processed client-side. Absolute control over your analytical workspace."</p>
-            <p class="font-mono text-[10px] text-right font-bold tracking-widest text-darkOnSurfaceVariant uppercase mb-0">— LOCAL PRIVACY MANIFESTO</p>
+          <div class="bg-darkSurfaceContainer/40 border border-darkOutline/10 p-6 rounded-2xl relative select-bg">
+            <span class="font-mono text-[9px] font-bold text-darkTertiary block uppercase tracking-wider mb-2">Biblical Financial Wisdom</span>
+            
+            <div class="min-h-[90px] flex flex-col justify-between">
+              <p id="scripture-text" class="font-mono text-xs text-darkTertiary italic mb-3 select-accent transition-all duration-300">
+                "For the love of money is a root of all kinds of evil. Some people, eager for money, have wandered from the faith and pierced themselves with many griefs."
+              </p>
+              <p id="scripture-citation" class="font-mono text-[10px] text-right font-bold tracking-widest text-darkOnSurfaceVariant uppercase mb-0">
+                — 1 TIMOTHY 6:10
+              </p>
+            </div>
+
+            <!-- Slider Controls -->
+            <div class="flex justify-between items-center mt-4 pt-4 border-t border-darkOutline/10 hero-divider">
+              <span class="text-[9px] text-darkOnSurfaceVariant font-mono">Use charts with clarity and moral focus</span>
+              <div class="flex gap-2">
+                <button onclick="prevScripture()" class="p-1 px-2 rounded bg-darkSurfaceLow border border-darkOutline/10 text-darkTertiary hover:bg-darkSurfaceHigh transition-all select-none" title="Previous Wisdom">
+                  <i data-lucide="chevron-left" class="h-3 w-3 inline"></i>
+                </button>
+                <button onclick="nextScripture()" class="p-1 px-2 rounded bg-darkSurfaceLow border border-darkOutline/10 text-darkTertiary hover:bg-darkSurfaceHigh transition-all select-none" title="Next Wisdom">
+                  <i data-lucide="chevron-right" class="h-3 w-3 inline"></i>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1235,6 +1259,57 @@
           row.classList.add('hidden');
         }
       });
+    }
+
+    // Biblical Wisdom & Scripture Slider state & data
+    const scriptures = [
+      {
+        text: '"For the love of money is a root of all kinds of evil. Some people, eager for money, have wandered from the faith and pierced themselves with many griefs."',
+        citation: '— 1 TIMOTHY 6:10'
+      },
+      {
+        text: '"Wealth gained hastily will dwindle, but whoever gathers little by little will increase it."',
+        citation: '— PROVERBS 13:11'
+      },
+      {
+        text: '"Better is a little with the fear of the Lord than great treasure and trouble with it."',
+        citation: '— PROVERBS 15:16'
+      },
+      {
+        text: '"Keep your life free from love of money, and be content with what you have, for he has said, \'I will never leave you nor forsake you.\'"',
+        citation: '— HEBREWS 13:5'
+      },
+      {
+        text: '"No one can serve two masters, for either he will hate the one and love the other, or he will be devoted to the one and despise the other. You cannot serve God and money."',
+        citation: '— MATTHEW 6:24'
+      }
+    ];
+
+    let currentScriptureIndex = 0;
+
+    function updateScriptureDisplay() {
+      const textElem = document.getElementById('scripture-text');
+      const citationElem = document.getElementById('scripture-citation');
+      if (textElem && citationElem) {
+        textElem.style.opacity = 0;
+        citationElem.style.opacity = 0;
+        setTimeout(() => {
+          textElem.innerText = scriptures[currentScriptureIndex].text;
+          citationElem.innerText = scriptures[currentScriptureIndex].citation;
+          textElem.style.opacity = 1;
+          citationElem.style.opacity = 1;
+        }, 150);
+      }
+    }
+
+    function nextScripture() {
+      currentScriptureIndex = (currentScriptureIndex + 1) % scriptures.length;
+      updateScriptureDisplay();
+    }
+
+    function prevScripture() {
+      currentScriptureIndex = (currentScriptureIndex - 1 + scriptures.length) % scriptures.length;
+      updateScriptureDisplay();
     }
   </script>
 </body>
