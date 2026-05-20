@@ -98,6 +98,76 @@
     .waveform-bar {
       animation: pulseHeight 1.2s ease-in-out infinite;
     }
+
+    /* ======================================================== */
+    /* Light Mode (White Landing/Dashboard) Overrides            */
+    /* ======================================================== */
+    html:not(.dark) body {
+      background-color: #f9f9ff !important;
+      color: #111c2d !important;
+    }
+    html:not(.dark) h1,
+    html:not(.dark) h2,
+    html:not(.dark) h3,
+    html:not(.dark) .h2-title {
+      color: #111c2d !important;
+    }
+    html:not(.dark) p,
+    html:not(.dark) .text-darkOnSurfaceVariant {
+      color: #44474f !important;
+    }
+    html:not(.dark) .glass-dark {
+      background: rgba(255, 255, 255, 0.7) !important;
+      backdrop-filter: blur(12px) !important;
+      border: 1px solid rgba(117, 117, 127, 0.15) !important;
+    }
+    html:not(.dark) .text-white:not(.cta-btn-class):not(.active-tab-class):not(.bg-lightPrimary *) {
+      color: #111c2d !important;
+    }
+    html:not(.dark) td.text-white {
+      color: #111c2d !important;
+    }
+    html:not(.dark) tr.bg-darkSurfaceLow\/70 {
+      background-color: rgba(222, 232, 255, 0.5) !important;
+      color: #111c2d !important;
+    }
+    html:not(.dark) tr.table-row-item:hover {
+      background-color: rgba(222, 232, 255, 0.3) !important;
+    }
+    html:not(.dark) .side-tab-active {
+      background-color: rgba(0, 2, 10, 0.08) !important;
+      color: #00020a !important;
+    }
+    html:not(.dark) nav button:not(.side-tab-active) {
+      color: #44474f !important;
+    }
+    html:not(.dark) nav button:not(.side-tab-active):hover {
+      background-color: rgba(0, 2, 10, 0.05) !important;
+      color: #00020a !important;
+    }
+    html:not(.dark) .select-bg.bg-darkSurfaceLow {
+      background-color: #f0f3ff !important;
+      border-color: rgba(117, 117, 127, 0.15) !important;
+    }
+    html:not(.dark) .select-bg.bg-darkSurfaceLow\/50 {
+      background-color: rgba(240, 243, 255, 0.5) !important;
+      border-color: rgba(117, 117, 127, 0.15) !important;
+    }
+    html:not(.dark) #audio-play-btn {
+      background-color: #00020a !important;
+      color: #ffffff !important;
+    }
+    html:not(.dark) .theme-btn-class {
+      border-color: rgba(117, 117, 127, 0.2) !important;
+      color: #44474f !important;
+    }
+    html:not(.dark) .theme-btn-class:hover {
+      background-color: rgba(0, 2, 10, 0.05) !important;
+      color: #00020a !important;
+    }
+    html:not(.dark) .text-green-400 {
+      color: #16a34a !important;
+    }
   </style>
 </head>
 <body class="bg-lightSurface text-lightOnSurface font-sans selection:bg-lightSecondaryContainer selection:text-lightOnSecondaryContainer transition-colors duration-300">
@@ -123,8 +193,7 @@
         </div>
       </button>
 
-      <!-- Mid Navigation / Mode View Selector -->
-      <div class="hidden md:flex items-center bg-darkSurfaceContainer/60 border border-darkOutline/15 p-1 rounded-xl shadow-inner select-bg">
+      <div class="hidden md:flex items-center bg-darkSurfaceContainer/60 border border-darkOutline/15 p-1 rounded-xl shadow-inner nav-view-selector-container">
         <button id="tab-btn-landing" onclick="switchView('landing')" class="px-5 py-2.5 rounded-lg text-xs font-semibold tracking-wide flex items-center gap-2 transition-all bg-darkTertiary text-darkSurfaceLow shadow active-tab-class">
           <i data-lucide="compass" class="h-4 w-4"></i> Public Site
         </button>
@@ -721,7 +790,7 @@
     function updateCustomThemeElements(darkModeActive) {
       const headers = document.querySelectorAll('.navbar-theme-class');
       const footers = document.querySelectorAll('.footer-theme-class');
-      const tabs = document.querySelectorAll('.select-bg');
+      const tabs = document.querySelectorAll('.nav-view-selector-container');
       const cardElements = document.querySelectorAll('.bento-card');
       const inputs = document.querySelectorAll('.form-input-theme');
       const buttons = document.querySelectorAll('.cta-btn-class');
@@ -733,7 +802,7 @@
       if (darkModeActive) {
         headers.forEach(el => el.className = "fixed top-0 w-full z-50 bg-darkSurfaceLow/80 backdrop-blur-xl border-b border-darkOutline/10 shadow-sm navbar-theme-class");
         footers.forEach(el => el.className = "bg-darkSurfaceContainer border-t border-darkOutline/5 py-12 relative z-10 footer-theme-class");
-        tabs.forEach(el => el.className = "hidden md:flex items-center bg-darkSurfaceContainer/60 border border-darkOutline/15 p-1 rounded-xl shadow-inner select-bg");
+        tabs.forEach(el => el.className = "hidden md:flex items-center bg-darkSurfaceContainer/60 border border-darkOutline/15 p-1 rounded-xl shadow-inner nav-view-selector-container");
         cardElements.forEach(el => {
           if (el.classList.contains('glass-light')) {
             el.classList.remove('glass-light');
@@ -752,7 +821,7 @@
       } else {
         headers.forEach(el => el.className = "fixed top-0 w-full z-50 bg-lightSurfaceLow/80 backdrop-blur-xl border-b border-lightOutline/10 shadow-sm navbar-theme-class");
         footers.forEach(el => el.className = "bg-lightSurfaceContainer border-t border-lightOutline/10 py-12 relative z-10 footer-theme-class");
-        tabs.forEach(el => el.className = "hidden md:flex items-center bg-lightSurfaceContainer p-1 rounded-xl shadow-inner select-bg");
+        tabs.forEach(el => el.className = "hidden md:flex items-center bg-lightSurfaceContainer p-1 rounded-xl shadow-inner nav-view-selector-container");
         cardElements.forEach(el => {
           if (el.classList.contains('glass-dark')) {
             el.classList.remove('glass-dark');
