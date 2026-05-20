@@ -2,15 +2,15 @@
 <img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
 </div>
 
-# TradeLens AI (Sanctum AI) — Tri-Modal Neural Trading Suite
+# TradeLens AI — Tri-Modal Neural Trading Suite
 
-TradeLens AI is a premium trading analysis suite comprising a **native macOS Application** and a companion **Google Chrome Extension**. It harmonizes visual, text, and voice analysis using state-of-the-art AI models (locally via Ollama or in the cloud via Nvidia NIM) to provide faith-led stewardship insights and data precision without moral compromise.
+TradeLens AI is a premium trading analysis suite comprising a **native macOS Application** and a companion **Google Chrome Extension**. It harmonizes visual, text, and voice analysis using state-of-the-art AI models (locally via Ollama or in the cloud via Nvidia NIM) to provide technical insights, pattern recognition, and precise data metrics.
 
 ---
 
 ## 🚀 Core Capabilities
 
-The suite supports three main interaction channels to help you steward your portfolio:
+The suite supports three main interaction channels to analyze your charts:
 
 ### 1. 📷 Computer Chart Vision
 * **Region or Full Page Capture:** Select specific regions of a chart or capture the entire page instantly.
@@ -56,7 +56,7 @@ Since the companion extension is hosted directly in this repository, follow thes
 
 ## 💻 Running the Web landing Page Locally
 
-To host the main Sanctum AI landing page and dashboard:
+To host the main TradeLens AI landing page and dashboard:
 
 ### Prerequisites
 * Node.js (v18+)
@@ -66,11 +66,7 @@ To host the main Sanctum AI landing page and dashboard:
    ```bash
    npm install
    ```
-2. Duplicate `.env.example` as `.env.local` and set your API key:
-   ```bash
-   GEMINI_API_KEY=your_gemini_api_key
-   ```
-3. Run the development server:
+2. Run the development server:
    ```bash
    npm run dev
    ```
